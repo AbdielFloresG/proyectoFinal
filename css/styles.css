@@ -34,11 +34,13 @@ body{
 
 /* navbar */
 .navbar{
+    background-color: black;
     -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
             box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
 }
 .navbar-brand img{
-    width: 30px;
+    max-width: 50px;
+    max-height: 50px;
 }
 .navbar-brand span{
     letter-spacing: 2px;
