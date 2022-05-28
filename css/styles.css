@@ -3,8 +3,9 @@
 :root{
     --lg-font: 'Kaisei Tokumin', serif;
     --sm-font: 'Poppins', sans-serif;
-    --pink: #e5345b;
     --dorado:#EABE3F;
+    --pink: #e5345b;
+   
 }
 body{
     font-family: var(--sm-font);
@@ -12,36 +13,35 @@ body{
 
 /* button */
 .bg-primary{
-    background-color: var(--pink)!important;
+    background-color: var(--dorado)!important;
 }
 
 .btn:not(.nav-btns button){
     background-color: #fff;
     color: rgb(85, 85, 85);
     padding: 10px 28px;
-    border-radius: 25px;
     border: 1px solid rgb(85, 85, 85);
 }
 .btn:not(.nav-btns button):hover{
     background-color: var(--dorado);
     color: #fff;
-    border-color: var(--pink);
+    border-color: var(--dorado);
 }
 
 /* text color */
 .text-primary{
-    color: var(--pink)!important;
+    color: var(--dorado)!important;
 }
 
 /* navbar */
 .navbar{
     background-color: black;
     -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
 }
 .navbar-brand img{
-    max-width: 50px;
-    max-height: 50px;
+    width: 50px;
+    height: 50px;
 }
 .navbar-nav-botones{
 
@@ -79,6 +79,11 @@ body{
     background-color: rgba(179, 179, 179, 0.05);
 }
 
+
+
+
+
+
 /* footer */
 footer .brand{
     font-family: var(--lg-font);
@@ -90,7 +95,7 @@ footer a{
     transition: color 0.3s ease;
 }
 footer a:hover{
-    color: var(--pink)!important;
+    color: var(--dorado)!important;
 }
 
 /* media queries */

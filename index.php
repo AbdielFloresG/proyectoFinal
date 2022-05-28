@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attire Home</title>
+    <title>GameStore</title>
     <!-- fontawesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap css -->
@@ -66,56 +66,9 @@
     </nav>
     
        -->
-
-    <nav class="navbar navbar-expand-lg navbar-dark">
-
-        <div class="container-fluid">
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-
-                    <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.php">
-                    <img src = "img/logo.png" style="max-width: 50px" alt = "site icon">
-                    <span class = "text-uppercase fw-lighter ms-2">Game Store</span>
-                    </a>
-                    
-                    
-                </ul>
-                <ul class="navbar-nav me-auto  ">
-            
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
-
-                </ul>
-
-
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Registrarse</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Iniciar sesión</a>
-                    </li>
-
-                </ul>
-                
-
-
-            </div>
-        </div>
-      </nav>
+      <?php
+        include('navbar.php')
+      ?>
 
 
 
