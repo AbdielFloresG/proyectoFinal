@@ -5,10 +5,12 @@
     --sm-font: 'Poppins', sans-serif;
     --dorado:#EABE3F;
     --pink: #e5345b;
+    --grisFondo: #171515;
    
 }
 body{
     font-family: var(--sm-font);
+    background-color: var(--grisFondo);
 }
 
 /* button */
@@ -34,7 +36,21 @@ body{
 }
 
 /* navbar */
+
+.containerNav{
+    background-color: black;
+    height: 80px;
+}
+
+a{
+    color: var(--dorado);
+}
+
+.nav-link{
+    color: var(--dorado);
+}
 .navbar{
+    color: var(--dorado);
     background-color: black;
     -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
     box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
@@ -56,6 +72,7 @@ body{
 .nav-item{
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
 }
+.form
 
 /* header */
 #header{

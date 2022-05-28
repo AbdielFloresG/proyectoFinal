@@ -1,5 +1,6 @@
+<link rel = "stylesheet" href = "css/estilos.css">
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg">
 
 <div class="container-fluid">
 
@@ -12,7 +13,7 @@
             </a>
             
         </ul>
-        <ul class="navbar-nav me-auto ">
+        <ul class="navbar-nav me-auto">
     
             <li class="nav-item">
                 <a class="nav-link" href="#">Categorias</a>
@@ -23,12 +24,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Contacto</a>
             </li>
+            <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.php">
+                <i class = "fa fa-shopping-cart"></i>
+            </a>
+
 
         </ul>
 
 
         <form class="d-flex">
-            <input class="form-control me-auto" type="search" placeholder="Buscar" aria-label="Search">
+            <input class="form-control " styles="width: 100px;" type="search" placeholder="Buscar" aria-label="Search">
             <button type="button" class="btn btn-primary">
                 <i class="fas fa-search"></i>
             </button>
@@ -38,8 +43,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Mi cuenta</a>
             </li>
-
-
+            <li class="nav-item">
+                
+            </li>
+    
         </ul>
         
 
@@ -47,3 +54,5 @@
     </div>
 </div>
 </nav>
+
+
