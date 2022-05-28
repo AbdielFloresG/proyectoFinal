@@ -14,7 +14,7 @@
 </head>
 <body>
     
-    <!-- navbar 
+   <!-- navbar 
     <nav class = "navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
         <div class = "container">
             <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
@@ -64,44 +64,37 @@
             </div>
         </div>
     </nav>
-    -->
+    
+       -->
 
     <nav class="navbar navbar-expand-lg navbar-dark">
 
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="#">
-                <img src="/img/logo.png" alt="">
-            </a>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                    </li>
-                    
+                <ul class="navbar-nav">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
-                    </li>
+                    <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.php">
+                    <img src = "img/logo.png" style="max-width: 50px" alt = "site icon">
+                    <span class = "text-uppercase fw-lighter ms-2">Game Store</span>
+                    </a>
                     
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                
                     
                 </ul>
+                <ul class="navbar-nav me-auto  ">
+            
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+
+                </ul>
+
 
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -110,10 +103,10 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
+                        <a class="nav-link" href="#">Registrarse</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
+                        <a class="nav-link" href="#">Iniciar sesión</a>
                     </li>
 
                 </ul>
@@ -123,6 +116,8 @@
             </div>
         </div>
       </nav>
+
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

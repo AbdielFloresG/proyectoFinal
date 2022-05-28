@@ -4,6 +4,7 @@
     --lg-font: 'Kaisei Tokumin', serif;
     --sm-font: 'Poppins', sans-serif;
     --pink: #e5345b;
+    --dorado:#EABE3F;
 }
 body{
     font-family: var(--sm-font);
@@ -22,7 +23,7 @@ body{
     border: 1px solid rgb(85, 85, 85);
 }
 .btn:not(.nav-btns button):hover{
-    background-color: var(--pink);
+    background-color: var(--dorado);
     color: #fff;
     border-color: var(--pink);
 }
@@ -42,12 +43,15 @@ body{
     max-width: 50px;
     max-height: 50px;
 }
+.navbar-nav-botones{
+
+}
 .navbar-brand span{
     letter-spacing: 2px;
     font-family: var(--lg-font);
 }
 .nav-link:hover{
-    color: var(--pink)!important;
+    color: var(--dorado)!important;
 }
 .nav-item{
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
@@ -65,7 +69,7 @@ body{
     border-color: #fff!important;
 }
 .carousel-item .btn:hover{
-    border-color: var(--pink)!important;
+    border-color: var(--dorado)!important;
 }
 
 
