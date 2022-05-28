@@ -1,5 +1,6 @@
 <link rel = "stylesheet" href = "css/estilos.css">
 
+
 <nav class="navbar navbar-expand-lg">
 
 <div class="container-fluid">
@@ -16,13 +17,13 @@
         <ul class="navbar-nav me-auto">
     
             <li class="nav-item">
-                <a class="nav-link" href="#">Categorias</a>
+                <a class="nav-link" href="categorias.php">Categorias</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Nosotros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a>
+                <a class="nav-link" href="contacto.php">Contacto</a>
             </li>
             <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.php">
                 <i class = "fa fa-shopping-cart"></i>
@@ -41,7 +42,7 @@
         <ul class="navbar-nav me-1 mb-2 mb-lg-0">
     
             <li class="nav-item">
-                <a class="nav-link" href="#">Mi cuenta</a>
+                <a class="nav-link" href="miCuenta.php">Mi cuenta</a>
             </li>
             <li class="nav-item">
                 
