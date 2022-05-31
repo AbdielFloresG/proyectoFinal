@@ -4,6 +4,7 @@
     --lg-font: 'Kaisei Tokumin', serif;
     --sm-font: 'Poppins', sans-serif;
     --dorado:#EABE3F;
+    --doradoDifuminado: rgba(234, 190, 63,0.6) ;
     --pink: #e5345b;
     --grisFondo: #171515;
    
@@ -120,4 +121,74 @@ footer a:hover{
     .nav-item{
         border-bottom: none;
     }
+}
+
+
+
+/*  Container form        */
+.formulario{
+    position: relative;
+    margin: 50px auto;
+    background-color: black;
+    text-align: center;
+    max-width: 600px;
+    padding: 10px 10px;
+    color: var(--dorado);
+    border-radius: 10px;
+}
+
+.formulario h2{
+    outline: none;
+    display: block;
+    width: 400px;
+    margin: 35px auto;
+}
+
+.formulario label{
+    text-align: left;
+    outline: none;
+    display: block;
+    width: 400px;
+    margin: 1px auto;
+}
+
+.formulario input[type="text"],input[type="password"]{
+    outline: none;
+    padding: 15px;
+    display: block;
+    width: 400px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    margin: 5px auto 30px;
+}
+.formulario input[type="password"]{
+    margin-bottom: 5px;
+}
+
+.formulario input[type="submit"]{
+    padding: 10px;
+    background: var(--dorado);
+    width: 300px;
+    margin: 30px auto 25px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    height: 70px;
+}
+.formulario input[type="submit"]:hover{
+
+    background-color: var(--doradoDifuminado);
+
+}
+.formulario a{
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: right;
+    margin: auto;
+    padding: 0px 50px 0px 250px;
+}
+.formulario a:hover{
+    color: var(--doradoDifuminado);
 }

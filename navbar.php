@@ -42,7 +42,7 @@
         <ul class="navbar-nav me-1 mb-2 mb-lg-0">
     
             <li class="nav-item">
-                <a class="nav-link" href="miCuenta.php">Mi cuenta</a>
+                <a class="nav-link" href="login.php">Mi cuenta</a>
             </li>
             <li class="nav-item">
                 
