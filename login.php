@@ -29,8 +29,12 @@
                 <label for="email">Correo Electronico</label>
                 <input type="text" name="email" required="true" placeholder="Ingresa tu Email" />
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/>
-                <a href="#">¿Olvidaste tu contraseña?</a>
+                <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/> 
+                <div class="linkLogin">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+
+                </div>    
+                
                 <input type="submit" name="" value="Iniciar sesión"/>
 
         </form>

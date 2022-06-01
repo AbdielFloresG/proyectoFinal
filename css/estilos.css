@@ -131,7 +131,8 @@ footer a:hover{
     margin: 50px auto;
     background-color: black;
     text-align: center;
-    max-width: 600px;
+    width: 90%;
+    max-width: 800px;
     padding: 10px 10px;
     color: var(--dorado);
     border-radius: 10px;
@@ -140,7 +141,8 @@ footer a:hover{
 .formulario h2{
     outline: none;
     display: block;
-    width: 400px;
+    width: 70%;
+    font-size: 2rem;    
     margin: 35px auto;
 }
 
@@ -148,7 +150,7 @@ footer a:hover{
     text-align: left;
     outline: none;
     display: block;
-    width: 400px;
+    width: 85%;
     margin: 1px auto;
 }
 
@@ -156,7 +158,8 @@ footer a:hover{
     outline: none;
     padding: 15px;
     display: block;
-    width: 400px;
+    width: 85%;
+    max-width: 700px;
     border-radius: 3px;
     border: 1px solid #eee;
     margin: 5px auto 30px;
@@ -168,9 +171,10 @@ footer a:hover{
 .formulario input[type="submit"]{
     padding: 10px;
     background: var(--dorado);
-    width: 300px;
+    max-width: 400px;
+    width: 65%;
     margin: 30px auto 25px;
-    font-weight: bold;
+    font-size: larger;
     border: 0;
     border-radius: 4px;
     cursor: pointer;
@@ -182,12 +186,17 @@ footer a:hover{
     background-color: var(--doradoDifuminado);
 
 }
-.formulario a{
-    box-sizing: border-box;
-    text-decoration: none;
-    text-align: right;
+
+.linkLogin{
+    width: 85%;
     margin: auto;
-    padding: 0px 50px 0px 250px;
+    text-align: right;
+}
+
+.linkLogin a{  
+    text-decoration: none;
+    width: 85%; 
+    
 }
 .formulario a:hover{
     color: var(--doradoDifuminado);
