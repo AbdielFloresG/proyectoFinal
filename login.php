@@ -15,33 +15,33 @@
     
 </head>
 <body>
+    
     <?php
         include("navbar.php");
     ?>
 
-
     
-    <div class="formulario">
-        <h2>Iniciar sesión</h2>
+        <div class="formulario">
+            <h2>Iniciar sesión</h2>
 
-        <form action="login.php" method="post">
-            
-                <label for="email">Correo Electronico</label>
-                <input type="text" name="email" required="true" placeholder="Ingresa tu Email" />
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/> 
-                <div class="linkLogin">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
-                </div>    
+            <form action="login.php" method="post">
                 
-                <input type="submit" name="" value="Iniciar sesión"/>
-                <div class="linkRegistro">
-                    <h3>
-                        ¿Aun no estás registrado? Haz click <span> <a href="#">aqui</a> </span> para registrate
-                    </h3>
-                </div>
-        </form>
-    </div>
+                    <label for="email">Correo Electronico</label>
+                    <input type="text" name="email" required="true" placeholder="Ingresa tu Email" />
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/> 
+                    <div class="linkLogin">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>    
+                    
+                    <input type="submit" name="" value="Iniciar sesión"/>
+                    <div class="linkRegistro">
+                        <h3>
+                            ¿Aun no estás registrado? Haz click <span> <a href="signUp.php">aqui</a> </span> para registrate
+                        </h3>
+                    </div>
+            </form>
+        </div>
 
 
     <?php

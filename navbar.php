@@ -1,6 +1,6 @@
 <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
 <link rel = "stylesheet" href = "css/estilos.css">
-<script src="js/navbar.js"></script>
+<script defer src="js/navbar.js"></script>
 
 <header class="header">
       <nav class="nav">
@@ -8,7 +8,7 @@
             <img src="img/logo.png" alt="">
         GameStore
         </a>
-
+        
         <button class="nav-toggle" aria-label="Abrir menú">
           <i class="fas fa-bars"></i>
         </button>

@@ -1,6 +1,10 @@
 .DS_Store
 .navMalo
 .jquery-3.6.0
-_navbar.js
+__navbar.js
+_navbar.php
 _estilos.css
 navbar3.php
+_index.php
+navMalo.txt
+_styles.css
