@@ -24,21 +24,24 @@
         <h2>Crear cuenta</h2>
 
         <form action="login.php" method="post">
+
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" required="true" placeholder="Ingresa tu nombre" />
+            <label for="lastname">Apellidos:</label>
+            <input type="text" name="lastname" required="true" placeholder="Ingresa tu apellido" />
+            <label for="email">Correo Electronico</label>
+            <input type="text" name="email" required="true" placeholder="Ingresa tu Email" />
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/> 
+            <label for="confirm_password">Confirma tu contraseña</label>
+            <input type="password" name="confirm_password" required="true" placeholder="Confirma tu Contraseña"/> 
             
-                <label for="email">Correo Electronico</label>
-                <input type="text" name="email" required="true" placeholder="Ingresa tu Email" />
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/> 
-                <div class="linkLogin">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
-                </div>    
-                
-                <input type="submit" name="" value="Iniciar sesión"/>
-                <div class="linkRegistro">
-                    <h3>
-                        ¿Aun no estás registrado? Haz click <span> <a href="#">aqui</a> </span> para registrate
-                    </h3>
-                </div>
+            <input type="submit" name="" value="Iniciar sesión"/>
+            <div class="linkRegistro">
+                <h3>
+                    ¿Ya estás registrado? Inicia sesión <span> <a href="#">aqui</a> </span> 
+                </h3>
+            </div>
         </form>
     </div>
 

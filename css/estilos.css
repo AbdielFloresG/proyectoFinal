@@ -215,17 +215,17 @@ footer a:hover{
 
 .formulario input[type="text"],input[type="password"]{
     outline: none;
-    padding: 15px;
+    padding: 10px;
     display: block;
     width: 85%;
     max-width: 700px;
     border-radius: 3px;
     border: 1px solid #eee;
-    margin: 5px auto 30px;
+    margin: 5px auto 25px;
 }
-.formulario input[type="password"]{
+/* .formulario input[type="password"]{
     margin-bottom: 5px;
-}
+} */
 
 .formulario input[type="submit"]{
     padding: 10px;
