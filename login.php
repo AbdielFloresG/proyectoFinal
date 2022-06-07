@@ -24,22 +24,23 @@
         <div class="formulario">
             <h2>Iniciar sesión</h2>
 
-            <form action="login.php" method="post">
+            <form id="loginForm" action="login.php" method="POST">
                 
                     <label for="email">Correo Electronico</label>
-                    <input type="text" name="email" required="true" placeholder="Ingresa tu Email" />
+                    <input type="text" id="email" name="email" required="true" placeholder="Ingresa tu Email" />
                     <label for="password">Contraseña</label>
-                    <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/> 
+                    <input type="password" id="password" name="password" required="true" placeholder="Ingresa tu Contraseña" minlength="6" maxlength="20"/> 
                     <div class="linkLogin">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>    
-                    
+                    <!-- <button type="submit">Ingresar</button> -->
                     <input type="submit" name="" value="Iniciar sesión"/>
                     <div class="linkRegistro">
                         <h3>
                             ¿Aun no estás registrado? Haz click <span> <a href="signUp.php">aqui</a> </span> para registrate
                         </h3>
                     </div>
+                    <div id="alerta"></div>
             </form>
         </div>
 
@@ -48,6 +49,6 @@
         include("footer.php")
     ?>
     
-
+<script src="js/login.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
   $stmt->bindParam(':name', $_POST['name']);
   $stmt->bindParam(':lastname', $_POST['lastname']);
   $stmt->bindParam(':email', $_POST['email']);
-  $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+//   $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
   $stmt->bindParam(':password', $password);
 
   if ($stmt->execute()) {
