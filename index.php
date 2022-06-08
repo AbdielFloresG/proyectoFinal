@@ -28,8 +28,6 @@
 
 
 
-
-
     <?php 
     include('footer.php')
     ?>

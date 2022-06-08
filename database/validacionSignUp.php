@@ -1,5 +1,21 @@
 
 <?php
+  require 'conexionSQLI.php';
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $consulta = ("SELECT * FROM usuario WHERE correoUsuario = '$email' LIMIT 1");
+  $ejecutarConsulta = mysqli_query($conn, $consulta) or die ("No se pudo ejecutar la consulta sql");
+  if(!$ejecutarConsulta){ 
+    // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " . 
+    header("Location: ../signUp.php?error=si");
+    echo mysqli_error($mysqli);
+    // si la consulta falla es bueno evitar que el código se siga ejecutando
+  } 
+
+  if(!mysqli_fetch_assoc($ejecutarConsulta)) {
+    
+
   //Validacion con conexion PDO
 
   //Solicitar conexion PDO
@@ -30,4 +46,15 @@
     }
     
   }
+    
+
+  } else {
+
+      header("Location: ../signUp.php?error4=si");
+      // Usuario El usuario ya existe
+  }
+
+
+
 ?>
+
