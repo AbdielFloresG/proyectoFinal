@@ -24,7 +24,7 @@
         <div class="formulario">
             <h2>Iniciar sesión</h2>
 
-            <form id="loginForm" action="login.php" method="POST">
+            <form id="formLogIn" action="database/validacionLogIn.php"  method="POST">
                 
                     <label for="email">Correo Electronico</label>
                     <input type="text" id="email" name="email" required="true" placeholder="Ingresa tu Email" />
@@ -34,13 +34,25 @@
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>    
                     <!-- <button type="submit">Ingresar</button> -->
-                    <input type="submit" name="" value="Iniciar sesión"/>
+                    <input type="button" id="btn-login" name="btn-login" value="Iniciar sesión"/>
                     <div class="linkRegistro">
                         <h3>
                             ¿Aun no estás registrado? Haz click <span> <a href="signUp.php">aqui</a> </span> para registrate
                         </h3>
                     </div>
-                    <div id="alerta"></div>
+                    <div class="alerta">
+                        <?php
+                            error_reporting(E_ALL | E_NOTICE);
+                            if(isset($_GET["error"])){
+                                if($_GET["error"]=="si"){
+                                echo "<span>Verifica tus datos</span>";
+                                }else{
+                                    
+                                }
+                            }
+                            
+                        ?>
+                    </div>
             </form>
         </div>
 

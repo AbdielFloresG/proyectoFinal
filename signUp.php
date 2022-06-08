@@ -1,26 +1,5 @@
 
-<?php
 
-require 'database/conexion.php';
-
-$message = '';
-
-if (!empty($_POST['email']) && !empty($_POST['password'])) {
-  $sql = "INSERT INTO Usuario VALUES (0,:name, :lastname, :email, :password,'user')";
-  $stmt = $conn->prepare($sql);
-  $stmt->bindParam(':name', $_POST['name']);
-  $stmt->bindParam(':lastname', $_POST['lastname']);
-  $stmt->bindParam(':email', $_POST['email']);
-//   $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-  $stmt->bindParam(':password', $password);
-
-  if ($stmt->execute()) {
-    $message = 'Successfully created new user';
-  } else {
-    $message = 'Sorry there must have been an issue creating your account';
-  }
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,14 +22,11 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         include("navbar.php");
     ?>
 
-    <?php if(!empty($message)): ?>
-      <p> <?= $message ?></p>
-    <?php endif; ?>
 
     <div class="formulario">
         <h2>Crear cuenta</h2>
 
-        <form action="signUp.php" method="POST">
+        <form id="formSignUp"action="database/validacionSignUp.php" method="POST">
 
             <label for="name">Nombre:</label>
             <input type="text" name="name" required="true" placeholder="Ingresa tu nombre" />
@@ -63,7 +39,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
             <label for="confirm_password">Confirma tu contraseña</label>
             <input type="password" name="confirm_password" required="true" placeholder="Confirma tu Contraseña"/> 
             
-            <input type="submit" name="" value="Crear cuenta"/>
+            <input type="button" id="btn-crear" name="btn-crear" value="Crear cuenta" />
             <div class="linkRegistro">
                 <h3>
                     ¿Ya estás registrado? Inicia sesión <span> <a href="login.php">aqui</a> </span> 
@@ -77,6 +53,6 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         include("footer.php")
     ?>
     
-
+    <script src="js/signUp.js"></script>
 </body>
 </html>
