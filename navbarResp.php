@@ -1,21 +1,3 @@
-<?php
-
-    // require 'database/conexionSQLI.php';
-
-
-    $nombre = $_SESSION["nombre"];
-    $apellido = $_SESSION["apellido"];
-    $ruta="";
-    $texto="";
-    if($_SESSION['privilegio']=='user'){
-      $texto = "Mi Cuenta";
-      $ruta = "miCuenta.php";
-    }else if($_SESSION['privilegio']=='guest'){
-      $texto = "Iniciar Sesion";
-      $ruta = "login.php";
-    }
-?>
-
 
 <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
 <link rel = "stylesheet" href = "css/estilos.css">
@@ -42,14 +24,7 @@
             <a href="#" class="nav-menu-link nav-link">Contacto</a>
           </li>
           <li class="nav-menu-item">
-            <?php 
-              
-
-            ?>
-
-            <a href=<?php echo $ruta?> class="nav-menu-link nav-link">
-              <?php echo $texto;?>
-            </a>
+            <a href="login.php" class="nav-menu-link nav-link"> Mi Cuenta</a>
           </li>
           <button class="nav-menu-cart" aria-label="Carrito">
           <i class="fas fa-shopping-cart"></i>
@@ -58,5 +33,3 @@
         </ul>
       </nav>
     </header>
-
-

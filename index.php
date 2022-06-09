@@ -1,3 +1,8 @@
+<?php
+    require 'database/conexionSQLI.php';
+    require 'database/session.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,8 +21,11 @@
 <body>
 
       <?php
-        include('navbar.php')
+
+          include('navbar.php');
+
       ?>
+
 
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -29,7 +37,8 @@
 
 
     <?php 
-    include('footer.php')
+    
+    include('footer.php');
     ?>
 
 

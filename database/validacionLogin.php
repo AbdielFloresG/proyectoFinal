@@ -17,15 +17,34 @@
   if(mysqli_fetch_assoc($ejecutarConsulta)) {
       // el usuario y la pwd son correctas
     //inicio de sesion
-    session_start();
-    //Declaro variables de sesion
-    $_SESSION["autentificado"]=true;
-    $_SESSION["usuario"] = $_POST["admin"];
+    $consulta2 = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$password' LIMIT 1");
+    $resultado = $conn->query($consulta2);
+    //$ejecutarConsulta2 = mysqli_query($conn, $consulta) or die ("No se pudo ejecutar la consulta sql");
 
-    header("Location: archivo-protegido.php");
+    $num = $resultado->num_rows; 
+    $row = $resultado->fetch_assoc();
+    $permiso = $row['rolUsuario'];
 
+    if($permiso=='admin'){
+      session_start();
+      //Declaro variables de sesion
+      $_SESSION["privilegio"]='admin';
+      $_SESSION["autentificado"]=true;
+      $_SESSION["nombre"] = $row["nombreUsuario"];
+      $_SESSION["apellido"] = $row["apellidoUsuario"];
+      header("Location: ../dashboard/principal.php");
+    }else{
+      session_start();
+      //Declaro variables de sesion
+      $_SESSION["privilegio"]='user';
+      $_SESSION["autentificado"]=true;
+      $_SESSION["nombre"] = $row["nombreUsuario"];
+      $_SESSION["apellido"] = $row["apellidoUsuario"];
+      header("Location: ../index.php");
+      
+    }
   } else {
-      header("Location: ../login.php?error2=si");
+      header("Location: ../login.php?error=si");
       // Usuario incorrecto o no existe
   }
 

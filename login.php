@@ -1,3 +1,7 @@
+<?php
+    require 'database/session.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

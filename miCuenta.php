@@ -1,3 +1,6 @@
+<?php
+    require 'database/session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +13,22 @@
 </head>
 <body>
     <?php include('navbar.php')?>
+
+
+    <div class="formulario">
+            <h2>Mi Cuenta</h2>
+
+            <form id="cerrar" action="database/salir.php">
+
+                <input type="submit" id="btn-login" name="btn-login" value="Cerrar sesion"/>
+
+
+            </form>
+        </div>
+
+
+
+
     <?php include('footer.php')?>
 </body>
 </html>
