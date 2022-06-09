@@ -42,7 +42,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="../database/salir.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -96,6 +96,10 @@
                             <a class="nav-link" href="tables.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
+                            </a>
+                            <a class="nav-link" href="../index.php">
+                                <div class="sb-nav-link-icon"><i class="bi bi-door-closed"></i></div>
+                                Pagina principal
                             </a>
                             <a class="nav-link" href="../database/salir.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-door-closed"></i></div>

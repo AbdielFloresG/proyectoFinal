@@ -15,16 +15,20 @@
     <?php include('navbar.php')?>
 
 
-    <div class="formulario">
-            <h2>Mi Cuenta</h2>
-
-            <form id="cerrar" action="database/salir.php">
-
-                <input type="submit" id="btn-login" name="btn-login" value="Cerrar sesion"/>
-
-
-            </form>
-        </div>
+    <div class="miCuenta">
+        <h2>Mi Cuenta</h2>
+        <p>
+            <?php
+                echo $_SESSION['nombre']." ".$_SESSION['apellido'];
+            ?>
+        </p>
+        <p>
+            <?php
+                echo $_SESSION['email'];
+            ?>
+        </p>
+        <a href="database/salir.php" class="nav-menu-link nav-link">Cerrar sesión</a>
+    </div>
 
 
 

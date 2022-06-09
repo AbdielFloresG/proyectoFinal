@@ -13,6 +13,9 @@
     }else if($_SESSION['privilegio']=='guest'){
       $texto = "Iniciar Sesion";
       $ruta = "login.php";
+    }else if($_SESSION['privilegio']=='admin'){
+      $texto = "Dashboard";
+      $ruta = "dashboard/principal.php";
     }
 ?>
 
@@ -33,20 +36,15 @@
         </button>
         <ul class="nav-menu">
           <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link nav-link">Categorias</a>
+            <a href="categorias.php" class="nav-menu-link nav-link">Categorias</a>
           </li>
           <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link nav-link">Nosotros</a>
+            <a href="aboutUs.php" class="nav-menu-link nav-link">Nosotros</a>
           </li>
           <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link nav-link">Contacto</a>
+            <a href="contacto.php" class="nav-menu-link nav-link">Contacto</a>
           </li>
           <li class="nav-menu-item">
-            <?php 
-              
-
-            ?>
-
             <a href=<?php echo $ruta?> class="nav-menu-link nav-link">
               <?php echo $texto;?>
             </a>

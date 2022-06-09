@@ -277,3 +277,52 @@ footer a:hover{
   color: red;
   font-size: x-large;
 }
+
+.miCuenta{
+  position: relative;
+  margin: 50px auto;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  padding: 10px 10px;
+  color: var(--dorado);
+  border-radius: 10px;
+}
+
+.miCuenta h2{
+  margin: 1%;
+}
+.miCuenta p{
+  margin: inherit;
+  margin: 2% 1%;
+  color: white;
+  font-size: xx-large;
+}
+.miCuenta a{
+  background-color: var(--dorado);
+  color: #000;
+  margin: auto;
+  width: 50%;
+  font-size: x-large;
+  border-style: solid;
+  border-color: var(--dorado);
+}
+.miCuenta a:hover{
+  background-color: var(--doradoDifuminado);
+  border-color: var(--doradoDifuminado);
+  color: #000;
+}
+.containerFooter{
+  background-color: #000;
+  padding: 1.5% 4% 1%;
+  max-height: 225px;
+}
+footer{
+  background-color: #000;
+  max-height: 225px;
+}
+footer img{
+  width: 100px;
+  
+
+}

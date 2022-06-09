@@ -1,18 +1,21 @@
-    <!-- about us -->
-    <section id = "about" class = "py-5">
-        <div class = "container">
-            <div class = "row gy-lg-5 align-items-center">
-                <div class = "col-lg-6 order-lg-1 text-center text-lg-start">
-                    <div class = "title pt-3 pb-5">
-                        <h2 class = "position-relative d-inline-block ms-4">About Us</h2>
-                    </div>
-                    <p class = "lead text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ipsam.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fuga blanditiis, modi exercitationem quae quam eveniet! Minus labore voluptatibus corporis recusandae accusantium velit, nemo, nobis, nulla ullam pariatur totam quos.</p>
-                </div>
-                <div class = "col-lg-6 order-lg-0">
-                    <img src = "images/about_us.jpg" alt = "" class = "img-fluid">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end of about us -->
+<?php
+    require 'database/session.php';
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias</title>
+    <link rel = "stylesheet" href = "css/estilos.css">
+    <link rel = "stylesheet" href = "bootstrap-5.0.2-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <?php include('navbar.php')?>
+    <?php include('footer.php')?>
+</body>
+</html>

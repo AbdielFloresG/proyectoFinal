@@ -32,6 +32,7 @@
       $_SESSION["autentificado"]=true;
       $_SESSION["nombre"] = $row["nombreUsuario"];
       $_SESSION["apellido"] = $row["apellidoUsuario"];
+      $_SESSION["email"] = $row["correoUsuario"];
       header("Location: ../dashboard/principal.php");
     }else{
       session_start();
@@ -40,6 +41,7 @@
       $_SESSION["autentificado"]=true;
       $_SESSION["nombre"] = $row["nombreUsuario"];
       $_SESSION["apellido"] = $row["apellidoUsuario"];
+      $_SESSION["email"] = $row["correoUsuario"];
       header("Location: ../index.php");
       
     }
