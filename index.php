@@ -1,6 +1,14 @@
 <?php
-    require 'database/conexionSQLI.php';
+    require 'database/conexion.php';
     require 'database/session.php';
+
+
+    //Se crea el query
+    $query = "SELECT idJuego, nombreJuego, precio FROM Juego WHERE activo=1;";
+    $sql = $conn->prepare($query);
+    $sql->execute();
+    $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,26 +28,45 @@
 </head>
 <body>
 
-      <?php
+<?php  include('navbar.php'); ?>
 
-          include('navbar.php');
+<main>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  row-cols-lg-4 row-cols-xl-5 g-4">
+            <?php foreach($resultado as $row) { ?>
+                <div class="col align-items-stretch">
+                    <div class="card shadow-sm">
+                        <?php 
+                            $id = $row['idJuego'];
+                            $imagen = "img/productos/$id/principal.jpg";
+                            $nombreJuego = $row['nombreJuego'];
+                            $precioJuego = $row['precio'];
 
-      ?>
+                            if(!file_exists($imagen)){
+                                $imagen = "img/productos/no-photo.jpg";
+                            }
+                        ?>
+                        <img src="<?php echo $imagen;?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $nombreJuego;?></h5>
+                            <p class="card-text">$<?php echo $precioJuego;?></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-primary">Detalles</a>
+                                </div>
+                                <a href="#" class="btn btn-success">Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</main>
 
 
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-   
-
-
-
-
-
-    <?php 
-    
-    include('footer.php');
-    ?>
+<?php include('footer.php'); ?>
 
 
 

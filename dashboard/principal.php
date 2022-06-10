@@ -95,7 +95,7 @@
                             </a>
                             <a class="nav-link" href="tables.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
+                                Tablas
                             </a>
                             <a class="nav-link" href="../index.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-door-closed"></i></div>
