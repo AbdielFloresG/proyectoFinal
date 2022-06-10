@@ -7,7 +7,7 @@
     $nombre = $_SESSION["nombre"];
     $apellido = $_SESSION["apellido"];
 
-    $query = "SELECT * FROM Juego WHERE activo=1;";
+    $query = "SELECT * FROM Juego;";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -122,7 +122,64 @@
 
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!--        Modales         -->
+                    <?php include('../database/modals/agregarJuegoModal.php')?>
+
+                    <div class="modal fade" id="modificarJuego" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Editar juego juego</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="Agregar juego" action="../database/agregarJuego.php" method="POST">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Nombre del juego: </label>
+                                            <input type="text" id="nombreEdit" class="form-control" name="name" placeholder="Nombre" required="true">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="precio" class="form-label">Precio: </label>
+                                            <input type="text" id="precioEdit" class="form-control" name="precio" placeholder="Precio" required="true">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="desarrollador" class="form-label">Desarrollador: </label>
+                                            <input type="text" id="desarrolladorEdit" class="form-control" name="desarrollador" placeholder="Desarrollador" required="true">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="genero" class="form-label">Genero: </label>
+                                            <input type="text" id="generoEdit" class="form-control" name="genero" placeholder="Genero" required="true">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="year" class="form-label">Año de lanzamiento: </label>
+                                            <input type="text" id="fechaEdit" class="form-control" name="year" placeholder="Año" required="true">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="descripcionEdit" class="form-label">Descripcion</label>
+                                            <textarea id="descripcionEdit" class="form-control"name="descripcionEdit" rows="3" required="true" max-length="250"></textarea>
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label for="activo" class="form-label">Activo</label>
+                                            <select class="form-select" id="activoEdit" name="activo" aria-label="Default select example" required="true">
+                                                <option selected>Selecciona una opcion</option>
+                                                <option value="1">Si</option>
+                                                <option value="2">No</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="eliminarJuego" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -158,7 +215,7 @@
                            
                             <div class="card-body">
                                 <table id="datatablesSimple">
-                                    <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#agregarJuego">
                                         Agregar juego
                                     </button>
                                     <thead>
@@ -171,6 +228,8 @@
                                             <th>Año de lanzamiento</th>
                                             <th>Descripcion</th>
                                             <th>Activo</th>
+                                            <th>Acciones</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -182,7 +241,7 @@
                                             <th>Genero</th>
                                             <th>Año de lanzamiento</th>
                                             <th>Descripcion</th>
-                                            <th>Activo</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -197,6 +256,7 @@
                                                 $descripcion = $row['descripcion'];
                                                 $activo = $row['activo'];
 
+
                                             ?>
  
                                             <tr>
@@ -208,6 +268,14 @@
                                                 <td><?php echo $fechaLanzamiento;?> </td>
                                                 <td><?php echo $descripcion;?> </td>
                                                 <td><?php echo $activo;?> </td>
+                                                <td> 
+                                                    <button type="button"   id="<?php echo $id;?>" class="btn btn-info my-1" data-bs-toggle="modal" data-bs-target="#modificarJuego"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreJuego ?>','<?php echo $precioJuego ?>','<?php echo $desarrollador ?>','<?php echo $genero ?>','<?php echo $fechaLanzamiento ?>','<?php echo $descripcion ?>','<?php echo $activo ?>')">
+                                                        Modificar
+                                                    </button>
+                                                    <button type="button"  id="<?php echo $id;?>" class="btn btn-danger my-1" data-bs-toggle="modal" data-bs-target="#eliminarJuego">
+                                                        Eliminar
+                                                    </button>
+                                                </td>
                                             </tr>
 
                                         <?php }?>
@@ -232,6 +300,30 @@
                 </footer>
             </div>
         </div>
+
+        <script>
+            function datos(id,nombre,precio,desarrollador,genero,lanzamiento,descripcion,activo){
+                let inputNombre = document.getElementById("nombreEdit")
+                inputNombre.setAttribute("value",nombre)
+                let inputprecio = document.getElementById("precioEdit")
+                inputprecio.setAttribute("value",precio)
+                let inputdesarrollador = document.getElementById("desarrolladorEdit")
+                inputdesarrollador.setAttribute("value",desarrollador)
+                let inputgenero = document.getElementById("generoEdit")
+                inputgenero.setAttribute("value",genero)
+                let inputlanzamiento = document.getElementById("fechaEdit")
+                inputlanzamiento.setAttribute("value",lanzamiento)
+                const inputdescripcion = document.getElementById("descripcionEdit")
+                inputdescripcion.innerHTML = descripcion
+
+                let inputactivo = document.getElementById("activoEdit")
+                inputactivo.setAttribute("value",activo)
+
+                //$("#nombreEdit").val(nombre);
+            }
+
+        </script>                                
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
