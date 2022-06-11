@@ -99,10 +99,16 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Graficas
                             </a>
+                            <div class="sb-sidenav-menu-heading">Tablas</div>
                             <a class="nav-link" href="tables.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tablas
+                                Juegos
                             </a>
+                            <a class="nav-link" href="tablesUsuario.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Usuarios
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Pagina</div>
                             <a class="nav-link" href="../index.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-door-closed"></i></div>
                                 Pagina principal
@@ -125,34 +131,9 @@
                     <!--        Modales         -->
                     <?php include('../database/modals/agregarJuegoModal.php')?>
                     <?php include('../database/modals/editarJuegoModal.php')?>
-
+                    <?php include('../database/modals/eliminarJuegoModal.php')?>
 
                     
-                    <div class="modal fade" id="eliminarJuego" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar juego</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ¿Está seguro que desea eliminar el juego?
-                                    <form id="eliminarJuego" action="../database/eliminarJuego.php" method="POST">
-                                        <div class="mb-3" style="display: none;" >
-                                            <input type="text" id="idJuegoEliminar" class="form-control" name="id" placeholder="Nombre" required="true" >
-                                           
-                                        </div>   
-                                        <div class="my-4">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-danger">Si, eliminar</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Tablas</h1>
                         <ol class="breadcrumb mb-4">

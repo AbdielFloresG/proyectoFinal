@@ -1,6 +1,6 @@
 
 <?php
-  require 'conexionSQLI.php';
+  require '../../database/conexionSQLI.php';
   $email = $_POST['email'];
   $password = $_POST['password'];
 
@@ -19,7 +19,7 @@
   //Validacion con conexion PDO
 
   //Solicitar conexion PDO
-  require 'conexion.php';
+  require '../../database/conexion.php';
   $message = '';
 
   //Validar que los campos no esten vacios
@@ -37,7 +37,7 @@
       $stmt->execute();
       $message = 'Successfully created new user';
   
-      header("location: ../login.php");
+      header("location: ../tablesUsuario.php");
 
     }catch(Exception $e){
       $message = 'Sorry there must have been an issue creating your account';

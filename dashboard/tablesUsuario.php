@@ -1,22 +1,30 @@
 <?php
 
     require '../database/conexionSQLI.php';
+    require '../database/conexion.php';
     require '../database/sessionAdmin.php';
 
     $nombre = $_SESSION["nombre"];
     $apellido = $_SESSION["apellido"];
 
+    $query = "SELECT * FROM usuario;";
+    $sql = $conn->prepare($query);
+    $sql->execute();
+    $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>GameStore Admin</title>
+        <title>Tablas Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -39,7 +47,6 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <?php echo $nombre." ".$apellido."  ";?><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
-                        <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="../database/salir.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
@@ -116,50 +123,121 @@
                         <?php echo $nombre." ".$apellido."  ";?>
                     </div>
                 </nav>
-            </div>            
+            </div>
+
             <div id="layoutSidenav_content">
                 <main>
+                    <!--        Modales         -->
+                    <?php include('../database/modals/agregarUsuarioModal.php')?>
+                    <?php include('../database/modals/editarUsuarioModal.php')?>
+                    <?php include('../database/modals/eliminarUsuarioModal.php')?>
+
+
+
+                    
+                    <div class="modal fade" id="eliminarJuego" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar juego</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Está seguro que desea eliminar el juego?
+                                    <form id="eliminarJuego" action="../database/eliminarJuego.php" method="POST">
+                                        <div class="mb-3" style="display: none;" >
+                                            <input type="text" id="idJuegoEliminar" class="form-control" name="id" placeholder="Nombre" required="true" >
+                                           
+                                        </div>   
+                                        <div class="my-4">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger">Si, eliminar</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Charts</h1>
+                        <h1 class="mt-4">Usuario</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="principal.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Charts</li>
+                            <li class="breadcrumb-item active">Tablas</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-                                <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
-                                .
+                                Seccion de tablas de los usuario
                             </div>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-chart-area me-1"></i>
-                                Area Chart Example
+                                <i class="fas fa-table me-1"></i>
+                                Usuarios
                             </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
+                           
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#agregarUsuario">
+                                        Agregar usuario
+                                    </button>
+                                    <thead>
+                                        <tr>
+                                            <th>idUsuario</th>
+                                            <th>Nombre usuario</th>
+                                            <th>Apellido usuario</th>
+                                            <th>Correo usuario</th>
+                                            <th>Password</th>
+                                            <th>Rol usuario</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>idUsuario</th>
+                                            <th>Nombre usuario</th>
+                                            <th>Apellido usuario</th>
+                                            <th>Correo usuario</th>
+                                            <th>Password</th>
+                                            <th>Rol usuario</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php foreach($resultado as $row) {?>
+                                            <?php 
+                                                $id = $row['idUsuario'];
+                                                $nombreUsuario = $row['nombreUsuario'];
+                                                $apellidoUsuario = $row['apellidoUsuario'];
+                                                $correoUsuario = $row['correoUsuario'];
+                                                $password = $row['passwordUsuario'];
+                                                $rolUsuario = $row['rolUsuario'];
+  
+
+
+                                            ?>
+ 
+                                            <tr>
+                                                <td><?php echo $id;?> </td>
+                                                <td><?php echo $nombreUsuario;?> </td>
+                                                <td><?php echo $apellidoUsuario;?> </td>
+                                                <td><?php echo $correoUsuario;?> </td>
+                                                <td><?php echo $password;?> </td>
+                                                <td><?php echo $rolUsuario;?> </td>
+                                                <td> 
+                                                    <button type="button"   id="<?php echo $id;?>" class="btn btn-info col-12  my-1" data-bs-toggle="modal" data-bs-target="#modificarUsuario"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreUsuario ?>','<?php echo $apellidoUsuario ?>','<?php echo $correoUsuario ?>','<?php echo $password ?>','<?php echo $rolUsuario ?>')">
+                                                        Modificar
+                                                    </button>
+                                                    <button type="button"  id="<?php echo $id;?>" class="btn btn-danger col-12  my-1" data-bs-toggle="modal" data-bs-target="#eliminarUsuario"   onClick="eliminardatos(<?php echo $id ?>)">
+                                                        Eliminar
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                        <?php }?>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -178,11 +256,39 @@
                 </footer>
             </div>
         </div>
+
+        <script>
+            function datos(id,nombre,apellido,correo,password,rol){
+                console.log(id,nombre,apellido,correo,password,rol)
+                let inputID = document.getElementById("idUsuarioEdit")
+                inputID.setAttribute("value",id)
+                let inputNombre = document.getElementById("nombreEdit")
+                inputNombre.setAttribute("value",nombre)
+                let inputprecio = document.getElementById("apellidoEdit")
+                inputprecio.setAttribute("value",apellido)
+                let inputdesarrollador = document.getElementById("correoEdit")
+                inputdesarrollador.setAttribute("value",correo)
+                let inputgenero = document.getElementById("rolEdit")
+                inputgenero.setAttribute("value",rol)
+                //const inputdescripcion = document.getElementById("descripcionEdit")
+                //inputdescripcion.innerHTML = descripcion
+
+                
+
+                //$("#nombreEdit").val(nombre);
+            }
+
+            function eliminardatos(id){
+                let inputID = document.getElementById("idUsuarioEliminar")
+                inputID.setAttribute("value",id)
+                //$("#nombreEdit").val(nombre);
+            }
+
+        </script>                                
+        <script src="../js/signUp.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="assets/demo/chart-pie-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>

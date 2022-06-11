@@ -93,10 +93,16 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Graficas
                             </a>
+                            <div class="sb-sidenav-menu-heading">Tablas</div>
                             <a class="nav-link" href="tables.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tablas
+                                Juegos
                             </a>
+                            <a class="nav-link" href="tablesUsuario.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Usuarios
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Pagina</div>
                             <a class="nav-link" href="../index.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-door-closed"></i></div>
                                 Pagina principal
