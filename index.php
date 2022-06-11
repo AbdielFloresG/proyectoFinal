@@ -1,8 +1,7 @@
 <?php
-    require 'config/config.php';
     require 'database/conexion.php';
     require 'database/session.php';
-
+    require 'config/config.php';
 
     //Se crea el query
     $query = "SELECT idJuego, nombreJuego, precio FROM Juego WHERE activo=1;";
@@ -53,9 +52,10 @@
                             <p style="color #fff;" class="card-text">$<?php echo $precioJuego;?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group ">
-                                    <a href="detalleJuego.php?id=<?php echo $row['idJuego'];?>&token=<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>   " class="btn btn-primary">Detalles</a>
+                                    <a href="detalleJuego.php?id=<?php echo $row['idJuego'];?>&token=<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>   " class="btn btn-primary py-3">Detalles</a>
+                                    
                                 </div>
-                                <a href="#" class="btn mt-mt-auto btn-success ">Agregar</a>
+                                <button class="btn btn-dark"  type="button"  onclick="addProducto(<?php echo $row['idJuego'];?>,'<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>')" >Agregar al carrito</button>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,26 @@
 
 <?php include('footer.php'); ?>
 
+    <script>
+        function addProducto(id,token){
+            let url = 'clases/carrito.php'
+            let formData = new FormData()
+            formData.append('id',id)
+            formData.append('token',token)
 
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(data => {
+                if(data.ok){
+                    let elemento = document.getElementById("num_cart")
+                    elemento.innerHTML = data.numero
+                }
+            })
+        }
+    </script>
 
 
     <!-- jquery -->

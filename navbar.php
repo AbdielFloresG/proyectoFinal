@@ -1,5 +1,5 @@
 <?php
-
+  
     // require 'database/conexionSQLI.php';
 
 
@@ -49,9 +49,10 @@
               <?php echo $texto;?>
             </a>
           </li>
-          <button class="nav-menu-cart" aria-label="Carrito">
-          <i class="fas fa-shopping-cart"></i>
-        </button>
+          <a href="checkout.php" class="nav-menu-cart" aria-label="Carrito">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart?></span>
+          </a>
 
         </ul>
       </nav>

@@ -1,5 +1,7 @@
 <?php
     require 'database/session.php';
+    require 'config/config.php';
+    
 ?>
 
 

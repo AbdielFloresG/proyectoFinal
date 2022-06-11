@@ -1,7 +1,8 @@
 <?php
-    require 'config/config.php';
     require 'database/conexion.php';
     require 'database/session.php';
+    require 'config/config.php';
+    
 
 
     $id = isset($_GET['id']) ? $_GET['id'] : '' ;
@@ -85,7 +86,7 @@
 
                 <div class="d-grid gap-3 col-6 mx-auto ">
                     <button class="btn btn-warning mt-4 py-3" type="button">Comprar ahora</button>
-                    <button class="btn btn-outline-warning py-3 mb-5"  type="button">Agregar al carrito</button>
+                    <button class="btn btn-outline-warning py-3 mb-5"  type="button"  onclick="addProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')" >Agregar al carrito</button>
                 </div>
            </div>
        </div>
@@ -97,7 +98,26 @@
 <?php include('footer.php'); ?>
 
 
+    <script>
+        function addProducto(id,token){
+            let url = 'clases/carrito.php'
+            let formData = new FormData()
+            formData.append('id',id)
+            formData.append('token',token)
 
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(data => {
+                if(data.ok){
+                    let elemento = document.getElementById("num_cart")
+                    elemento.innerHTML = data.numero
+                }
+            })
+        }
+    </script>
 
     <!-- jquery -->
     <script src = "js/jquery-3.6.0.js"></script>

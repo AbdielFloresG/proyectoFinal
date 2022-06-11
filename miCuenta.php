@@ -1,5 +1,6 @@
 <?php
     require 'database/session.php';
+    require '../config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
