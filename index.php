@@ -36,7 +36,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  row-cols-lg-4 row-cols-xl-5 g-4">
             <?php foreach($resultado as $row) { ?>
                 <div class="col align-items-stretch d-block ">
-                    <div class="card shadow-sm  ">
+                    <div class="card shadow-sm h-100">
                         <?php 
                             $id = $row['idJuego'];
                             $imagen = "img/productos/$id/principal.jpg";
@@ -47,15 +47,15 @@
                                 $imagen = "img/productos/no-photo.jpg";
                             }
                         ?>
-                        <img src="<?php echo $imagen;?>" class="d-block w-100">
+                        <img src="<?php echo $imagen;?>" class="d-block w-100 ">
                         <div class="card-body">
                             <h5 class="card-title light"><?php echo $nombreJuego;?></h5>
                             <p style="color #fff;" class="card-text">$<?php echo $precioJuego;?></p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
+                                <div class="btn-group ">
                                     <a href="detalleJuego.php?id=<?php echo $row['idJuego'];?>&token=<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>   " class="btn btn-primary">Detalles</a>
                                 </div>
-                                <a href="#" class="btn btn-success">Agregar</a>
+                                <a href="#" class="btn mt-mt-auto btn-success ">Agregar</a>
                             </div>
                         </div>
                     </div>

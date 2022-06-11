@@ -225,10 +225,10 @@
                                                 <td><?php echo $password;?> </td>
                                                 <td><?php echo $rolUsuario;?> </td>
                                                 <td> 
-                                                    <button type="button"   id="<?php echo $id;?>" class="btn btn-info col-12  my-1" data-bs-toggle="modal" data-bs-target="#modificarUsuario"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreUsuario ?>','<?php echo $apellidoUsuario ?>','<?php echo $correoUsuario ?>','<?php echo $password ?>','<?php echo $rolUsuario ?>')">
+                                                    <button type="button"   id="<?php echo $id;?>" class="btn btn-info col-12  my-1 px-0" data-bs-toggle="modal" data-bs-target="#modificarUsuario"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreUsuario ?>','<?php echo $apellidoUsuario ?>','<?php echo $correoUsuario ?>','<?php echo $password ?>','<?php echo $rolUsuario ?>')">
                                                         Modificar
                                                     </button>
-                                                    <button type="button"  id="<?php echo $id;?>" class="btn btn-danger col-12  my-1" data-bs-toggle="modal" data-bs-target="#eliminarUsuario"   onClick="eliminardatos(<?php echo $id ?>)">
+                                                    <button type="button"  id="<?php echo $id;?>" class="btn btn-danger col-12  my-1 px-0" data-bs-toggle="modal" data-bs-target="#eliminarUsuario"   onClick="eliminardatos(<?php echo $id ?>)">
                                                         Eliminar
                                                     </button>
                                                 </td>
