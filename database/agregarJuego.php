@@ -35,7 +35,7 @@
   if (!empty($_POST['name']) && !empty($_POST['precio']) && !empty($_POST['desarrollador']) && !empty($_POST['genero'])){
 
     //Se crea el query
-    $query = "INSERT INTO Juego VALUES (0,'$nombreJuego', $precioJuego, '$desarrolladorJuego', '$generoJuego', $anoJuego,'$desarrolladorJuego', $activo);";
+    $query = "INSERT INTO Juego VALUES (0,'$nombreJuego', $precioJuego, '$desarrolladorJuego', '$generoJuego', $anoJuego,'$descripcionJuego', $activo);";
     $stmt = $conn->prepare($query);
 
     try{
