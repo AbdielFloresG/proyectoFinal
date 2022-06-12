@@ -3,7 +3,6 @@
     require 'database/session.php';
     require 'config/config.php';
 
-
     $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null;
 
     //print_r($_SESSION);
@@ -18,9 +17,6 @@
             $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
         }
     }
-    
-
-
 ?>
 
 <!DOCTYPE html>
