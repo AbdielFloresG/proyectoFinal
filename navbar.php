@@ -50,12 +50,12 @@
             </a>
           </li>
           <li class="nav-menu-item">
-            <a href="checkout.php" class="nav-menu-cart pb-0 align-items-center" aria-label="Carrito">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="num_cart " class="badge bg-secondary bg-danger px-2"><?php echo $num_cart?></span>
+            <a href="checkout.php" class="nav-menu-cart" aria-label="Carrito">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="num_cart" class="badge bg-danger"><?php echo $num_cart?></span>
             </a>
           </li>
-         
+          
 
         </ul>
       </nav>

@@ -55,7 +55,7 @@
                                     <a href="detalleJuego.php?id=<?php echo $row['idJuego'];?>&token=<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>   " class="btn btn-primary py-3">Detalles</a>
                                     
                                 </div>
-                                <button class="btn btn-dark"  type="button"  onclick="addProducto(<?php echo $row['idJuego'];?>,'<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>') ;updateCarrito()" >Agregar al carrito</button>
+                                <button class="btn btn-dark"  type="button"  onclick="addProducto(<?php echo $row['idJuego'];?>,'<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>')" >Agregar al carrito</button>
                             </div>
                         </div>
                     </div>
@@ -87,8 +87,6 @@
                 }
             })
         }
-
-
     </script>
 
 
