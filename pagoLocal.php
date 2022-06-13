@@ -6,7 +6,7 @@
 
     $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null;
 
-    print_r($_SESSION['carrito']['productos']);
+
 
     $lista_carrito = array();
 
@@ -51,12 +51,14 @@
 
         
         
-        <div class="container">
+        <div class="container mx-auto text-light formulario" style="max-width: 900px;">
+        <h2 class="text-warning mx-auto " style="max-width:280px;">Detalles de pago</h4>
             <div class="row">
                 
-                <div class="col-6">
-                    <div class="table-responsive bg-light p-4">
-                        <table class="table" >
+                <div class="">
+                
+                    <div class="table-responsive bg-bg-transparent p-4">
+                        <table class="table text-light" >
                             <thead>
                                 <tr>
                                     <th>Producto</th>
@@ -64,7 +66,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-light">
                                 <?php if($lista_carrito == null){
                                     echo '<tr><td colspan="5" class="text-center"><b>Carrito vacio</b></td></tr>';
                                 } else{
@@ -78,17 +80,17 @@
                                         $total += $subtotal;
                                 ?>
                                 <tr>
-                                    <td><?php echo $_nombre;?></td>
-                                    <td>
+                                    <td class="text-light"><?php echo $_nombre;?></td>
+                                    <td class="text-light">
                                         <div id="subtotal_<?php echo $_id;?>" name="subtotal[]"><?php echo '$'.number_format($subtotal,2,'.',',');?> </div>
                                     </td>
                                 </tr>
                                 <?php }?>
 
                                 <tr>
-                                    <td colspan="3"></td>
-                                    <td colspan="2">
-                                        <p class="h3 text-end" id="total">Total a pagar: <?php echo "$".number_format($total,2,'.',',');?></p>
+                                    <td class="text-light" colspan="0"></td>
+                                    <td  class="text-light" colspan="0">
+                                        <p class="h3 text-end text-warning " id="total">Total a pagar: <?php echo "$".number_format($total,2,'.',',');?></p>
                                     </td>
                                 </tr>
 
@@ -98,16 +100,17 @@
                     </div>
                     
                 </div>
-                <div class="col-6">
-                    <h4 class="text-warning">Detalles de pago</h4>
-                    <div>
-                        <a href="capturaLocal.php" class="btn btn-warning">Pagar</a>
-                    </div>
-
-
-
-                </div>
+              
             </div>
+            <div class="row ">
+                   
+                   <div class="">
+                       <a href="capturaLocal.php" class="btn btn-warning p-3 fs-3 mx-auto">Pagar</a>
+                   </div>
+
+
+
+               </div>
         </div>
 
     </main>

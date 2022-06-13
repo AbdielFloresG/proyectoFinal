@@ -7,14 +7,8 @@ require 'config/config.php';
     $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null;
     $idUsuario = $_SESSION["idUsuario"];
   
-    
-    $consulta =("SELECT MAX(idVenta) AS id FROM venta");
-    $rs = mysqli_query($con, $consulta);
-    if ($row = mysqli_fetch_row($rs)) {
-    $lastId = trim($row[0]);
-
-    }
    
+    
 
     if($productos != null){
         foreach($productos as $clave =>$cantidad){
@@ -29,8 +23,8 @@ require 'config/config.php';
         exit;
     }
 
-    print_r($lista_carrito);
-    echo $lastId;
+    //print_r($lista_carrito);
+    //echo $lastId;
 
 
     // //Se crea el query
@@ -55,6 +49,30 @@ require 'config/config.php';
     } else{
         $total = 0;
         foreach($lista_carrito as $producto){
+            $_precio = $producto['precio'];
+            $subtotal = $cantidad * $_precio;
+            $total += $subtotal;
+        }
+
+        $dt = date('Y-m-d h:i:s');
+        $query = "INSERT INTO Venta Values (0,$idUsuario,'$dt',$total)";
+        $sql = $conn->prepare($query);
+        $sql->execute();
+
+
+
+
+            
+        $consulta =("SELECT MAX(idVenta) AS id FROM venta");
+        $rs = mysqli_query($con, $consulta);
+        if ($row = mysqli_fetch_row($rs)) {
+        $lastId = trim($row[0]);
+        
+        }
+
+    
+
+        foreach($lista_carrito as $producto){
             $_id = $producto['idJuego'];
             $_nombre = $producto['nombreJuego'];
             $cantidad = $producto['cantidad'];
@@ -64,15 +82,21 @@ require 'config/config.php';
 
 
 
-            $query = "INSERT INTO detalleVenta Values (0,$lastId,$_id,$_nombre,$cantidad)";
+            $query = "INSERT INTO detalleVenta Values (0,$lastId,$_id,'$_nombre',$cantidad)";
             $sql = $conn->prepare($query);
             $sql->execute();
+
+            echo $query;
         }
-        $dt = date('Y-m-d h:i:s');
-        echo $dt;
+        
+        //echo $dt;
         
 
-        $query = "INSERT INTO Venta Values (0,$idUsuario,'$dt',$total)";
-        $sql = $conn->prepare($query);
-        $sql->execute();
+
+ 
+        $_SESSION['carrito']['productos']=(!isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null);
+
+        header("Location: ventaExitosa.php?$lastId");
+
+        //echo $query;
     }
