@@ -6,7 +6,8 @@
 
     $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null;
 
-    //print_r($_SESSION);
+    print_r($_SESSION['carrito']['productos']);
+
     $lista_carrito = array();
 
     if($productos != null){
@@ -52,10 +53,7 @@
         
         <div class="container">
             <div class="row">
-                <div class="col-6">
-                    <h4>Detalles de pago</h4>
-                    <div id="paypal-button-container"></div>
-                </div>
+                
                 <div class="col-6">
                     <div class="table-responsive bg-light p-4">
                         <table class="table" >
@@ -100,6 +98,15 @@
                     </div>
                     
                 </div>
+                <div class="col-6">
+                    <h4 class="text-warning">Detalles de pago</h4>
+                    <div>
+                        <a href="capturaLocal.php" class="btn btn-warning">Pagar</a>
+                    </div>
+
+
+
+                </div>
             </div>
         </div>
 
@@ -123,47 +130,7 @@
         <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID?>&currency=<?php echo CURRENCY?>"></script>
         
         <script>
-            paypal.Buttons({style:{
-                color: 'blue',
-                shape: 'pill',
-                label: 'pay'
-            },
-            createOrder: function(data, actions){
-                return actions.order.create({
-                    purchase_units: [{
-                        amount:{
-                            value: <?php echo $total;?>
-                        }
-                    }]
-                });
-            },
-
-            onApprove: function(data, actions){
-
-                
-                actions.order.capture().then(function(detalles2){
-                console.log(detalles2) 
-                let url = 'clases/captura.php'
-                return fetch(url,{
-                    method: 'POST',
-                    headers: {
-                        'content-type' : 'application/json'
-                    },
-                    body: JSON.stringify({
-                        detalles: detalles2
-                    })
-                });
-            });
-            },
-
-            onCancel: function(data){
-                alert("Pago cancelado")
-                console.log(data)
-               
-            }
-        
-        
-            }).render('#paypal-button-container')
+            
         </script>
     </body>
 

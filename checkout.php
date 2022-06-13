@@ -6,7 +6,7 @@
 
     $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null;
 
-    //print_r($_SESSION);
+    print_r($_SESSION);
     $lista_carrito = array();
 
     if($productos != null){
@@ -114,11 +114,13 @@
                     <?php }?>
                 </table>
             </div>
-            <div class="row">
-                <div class="col-md-5 offset-md-7 d-grid gap-2">
-                    <button class="btn btn-warning btn-lg my-4">Realizar pago</button>
+            <?php if($lista_carrito != null){ ?>
+                <div class="row">
+                    <div class="col-md-5 offset-md-7 d-grid gap-2">
+                        <a href="pagoLocal.php" class="btn btn-warning btn-lg my-4">Realizar pago</a>
+                    </div>
                 </div>
-            </div>
+            <?php }?>
         </div>
 
     </main>

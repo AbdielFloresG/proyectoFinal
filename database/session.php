@@ -7,6 +7,7 @@
         $_SESSION["autentificado"]=false;
         $_SESSION["nombre"]="Invitado";
         $_SESSION["apellido"]="";
+        $_SESSION["idUsuario"]="";
     }
 
     // if(!$_SESSION["autentificado"]){

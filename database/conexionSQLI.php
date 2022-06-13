@@ -1,13 +1,14 @@
 <?php
 
+
 $server = 'localhost:3306';
 $username = 'root';
 $password = 'password';
 $database = 'gameStore';
 
-$conn = mysqli_connect($server, $username, $password,$database);
+$con = mysqli_connect($server, $username, $password,$database);
 
-if (!$conn) {
+if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";

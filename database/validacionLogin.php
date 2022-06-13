@@ -5,7 +5,7 @@
   $password = $_POST['password'];
 
   $consulta = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$password' LIMIT 1");
-  $ejecutarConsulta = mysqli_query($conn, $consulta) or die ("No se pudo ejecutar la consulta sql");
+  $ejecutarConsulta = mysqli_query($con, $consulta) or die ("No se pudo ejecutar la consulta sql");
 
   if(!$ejecutarConsulta){ 
     // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " . 
@@ -18,7 +18,7 @@
       // el usuario y la pwd son correctas
     //inicio de sesion
     $consulta2 = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$password' LIMIT 1");
-    $resultado = $conn->query($consulta2);
+    $resultado = $con->query($consulta2);
     //$ejecutarConsulta2 = mysqli_query($conn, $consulta) or die ("No se pudo ejecutar la consulta sql");
 
     $num = $resultado->num_rows; 
@@ -33,6 +33,7 @@
       $_SESSION["nombre"] = $row["nombreUsuario"];
       $_SESSION["apellido"] = $row["apellidoUsuario"];
       $_SESSION["email"] = $row["correoUsuario"];
+      $_SESSION["idUsuario"] = $row["idUsuario"];
       header("Location: ../dashboard/principal.php");
     }else{
       session_start();
@@ -42,6 +43,7 @@
       $_SESSION["nombre"] = $row["nombreUsuario"];
       $_SESSION["apellido"] = $row["apellidoUsuario"];
       $_SESSION["email"] = $row["correoUsuario"];
+      $_SESSION["idUsuario"] = $row["idUsuario"];
       header("Location: ../index.php");
       
     }

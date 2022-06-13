@@ -17,15 +17,21 @@ passwordUsuario VARCHAR(250) NOT NULL,
 rolUsuario ENUM('user','admin') DEFAULT 'user' NOT NULL
 );
 
-CREATE TABLE Juego(
-idJuego INT PRIMARY KEY AUTO_INCREMENT, 
-nombreJuego VARCHAR(50) NOT NULL, 
-precio FLOAT NOT NULL,
-desarrollador VARCHAR(50) NOT NULL,
-genero VARCHAR(100) NOT NULL,
-fechaLanzamiento INT NOT NULL,
-descripcion VARCHAR(250) NOT NULL,
-activo INT NOT NULL
+
+CREATE TABLE detalleVenta(
+	idTrasaccion INT PRIMARY KEY AUTO_INCREMENT,
+    idVenta INT, FOREIGN KEY(idVenta) REFERENCES venta(idVenta) ON UPDATE CASCADE ON DELETE CASCADE,
+    idJuego int,
+    nombreJuego varchar(200),
+    cantidad float
+);
+
+
+CREATE TABLE Venta(
+idVenta INT PRIMARY KEY AUTO_INCREMENT,
+idUsuario INT, FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario) ON UPDATE CASCADE ON DELETE CASCADE,
+fechaVenta DATETIME,
+monto FLOAT NOT NULL
 );
 
 CREATE TABLE Venta(
@@ -38,7 +44,9 @@ fechaVenta DATE NOT NULL
 );
 
 
-INSERT INTO `gamestore`.`usuario` (`nombreUsuario`, `apellidoUsuario`, `correoUsuario`, `passwordUsuario`) VALUES ('Abdiel', 'Flores', 'admin', '123456');
+
+INSERT INTO `gamestore`.`usuario` (`nombreUsuario`, `apellidoUsuario`, `correoUsuario`, `passwordUsuario`,`rolUsuario`) VALUES ('Abdiel', 'Flores', 'admin', '123456','admin');
+INSERT INTO `gamestore`.`usuario` (`nombreUsuario`, `apellidoUsuario`, `correoUsuario`, `passwordUsuario`,`rolUsuario`) VALUES ('Abdiel', 'Flores', 'a', '123456','user');
 
 
 INSERT INTO juego VALUES (0, 'Rainbow Six Siege', 200.00, 'Ubisoft', 'Shooter', 2015,'Videojuego de disparos táctico en línea desarrollado por Ubisoft Montreal y distribuidor por Ubisoft.', 1);
