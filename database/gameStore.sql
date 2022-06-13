@@ -1,3 +1,4 @@
+drop database gamestore;
 DROP DATABASE gameStore;
 CREATE DATABASE gameStore;
 USE gameStore;
@@ -7,7 +8,10 @@ idCambio INT PRIMARY KEY AUTO_iNCREMENT,
 fechaModificacion DATETIME NOT NULL, 
 descripcionCambio VARCHAR(500)
 );
-
+select*from usuario;
+drop table usuario;
+INSERT INTO `gamestore`.`usuario` (`nombreUsuario`, `apellidoUsuario`, `correoUsuario`, `passwordUsuario`,`rolUsuario`) VALUES ('Abdiel', 'Flores', 'admin', 'ef8eb12674e8e1358266c00f9380fe1be78c07dc','admin');
+INSERT INTO `gamestore`.`usuario` (`nombreUsuario`, `apellidoUsuario`, `correoUsuario`, `passwordUsuario`,`rolUsuario`) VALUES ('Abdiel', 'Flores', 'a', 'ef8eb12674e8e1358266c00f9380fe1be78c07dc','user');
 CREATE TABLE Usuario(
 idUsuario INT PRIMARY KEY AUTO_INCREMENT, 
 nombreUsuario VARCHAR(50) NOT NULL,
@@ -34,7 +38,7 @@ idUsuario INT, FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario) ON UPDATE CA
 fechaVenta DATETIME,
 monto FLOAT NOT NULL
 );
-
+insert into venta values(0,2,now(),2800);
 CREATE TABLE detalleVenta(
 	idTrasaccion INT PRIMARY KEY AUTO_INCREMENT,
     idVenta INT, FOREIGN KEY(idVenta) REFERENCES venta(idVenta) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -43,11 +47,6 @@ CREATE TABLE detalleVenta(
     cantidad float
 );
 
-
-
-
-INSERT INTO `gamestore`.`usuario` (`nombreUsuario`, `apellidoUsuario`, `correoUsuario`, `passwordUsuario`,`rolUsuario`) VALUES ('Abdiel', 'Flores', 'admin', 'ef8eb12674e8e1358266c00f9380fe1be78c07dc','admin');
-INSERT INTO `gamestore`.`usuario` (`nombreUsuario`, `apellidoUsuario`, `correoUsuario`, `passwordUsuario`,`rolUsuario`) VALUES ('Abdiel', 'Flores', 'a', '123456','user');
 
 INSERT INTO juego VALUES (0, 'Rainbow Six Siege', 200.00, 'Ubisoft', 'Shooter', 2015,'Videojuego de disparos táctico en línea desarrollado por Ubisoft Montreal y distribuidor por Ubisoft.', 1);
 INSERT INTO juego VALUES (0, 'GTA V', 300.00, 'Rockstar', 'Accion/Aventura', 2013,'Es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games.', 1);
@@ -60,9 +59,77 @@ INSERT INTO juego VALUES (0, 'Madden NFL 22', 1400.00, 'Electronic Arts', 'Futbo
 
 ##update usuario set passwordUsuario = "ef8eb12674e8e1358266c00f9380fe1be78c07dc" where correoUsuario ='admin';
 
-SELECT * FROM venta;
-SELECT * FROM detalleVenta;
+SELECT monto FROM venta;
+SELECT sum(cantidad) FROM detalleVenta where idVenta=1 ;
+
+SELECT idVenta FROM venta GROUP BY idVenta=1;
 
 SELECT * FROM usuario;
 SELECT * FROM juego;
-SELECT * FROM venta;
+SELECT * FROM detalleVenta;
+
+CREATE TRIGGER insercionUsuario AFTER INSERT ON Usuario
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una insercion en la tabla Usuario,
+nombre: ',NEW.nombreUsuario));
+
+CREATE TRIGGER eliminarUsuario AFTER DELETE ON Usuario
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una eliminacion en la tabla Usuario,
+nombre: ',OLD.nombreUsuario));
+
+CREATE TRIGGER actualizarUsuario AFTER UPDATE ON Usuario
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una actualizar en la tabla Usuario,
+nuevo usuario: ',NEW.nombreUsuario));
+
+CREATE TRIGGER insercionJuegos AFTER INSERT ON Juego
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una insercion en la tabla Usuario,
+nombre del juego: ',NEW.nombreJuego));
+
+CREATE TRIGGER eliminarJuego AFTER DELETE ON Juego
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una eliminacion en la tabla Usuario,
+nombre del juego: ',OLD.nombreJuego));
+
+CREATE TRIGGER actualizarJuego AFTER UPDATE ON Juego
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una actualizar en la tabla Usuario,
+nuevo del juego: ',NEW.nombreJuego));
+
+CREATE TRIGGER insercionVenta AFTER INSERT ON Venta
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una insercion en la tabla Venta'));
+
+CREATE TRIGGER eliminarVenta AFTER DELETE ON Venta
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una eliminacion en la tabla Venta'));
+
+CREATE TRIGGER actualizarVenta AFTER UPDATE ON Venta
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una actualizar en la tabla Venta'));
+
+CREATE TRIGGER insercionDetalleVenta AFTER INSERT ON detalleVenta
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una insercion en la tabla detalleVenta'));
+
+CREATE TRIGGER eliminarDetalleVenta AFTER DELETE ON detalleVenta
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una eliminacion en la tabla detalleVenta'));
+
+CREATE TRIGGER actualizarDetalleVenta AFTER UPDATE ON detalleVenta
+FOR EACH ROW
+INSERT INTO Log_
+VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una actualizar en la tabla detalleVenta'));

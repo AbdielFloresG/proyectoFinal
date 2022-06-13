@@ -125,7 +125,7 @@
                 <main>
 
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Cantidad de ventas</h1>
+                        <h1 class="mt-4">Detalle de ventas</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="principal.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tablas</li>

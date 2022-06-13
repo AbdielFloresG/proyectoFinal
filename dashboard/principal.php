@@ -8,6 +8,12 @@ require '../database/sessionAdmin.php';
 $nombre = $_SESSION["nombre"];
 $apellido = $_SESSION["apellido"];
 
+
+$queryResultado = "SELECT * FROM Juego;";
+$sqlResultado = $conn->prepare($queryResultado);
+$sqlResultado->execute();
+$resultado = $sqlResultado->fetchAll(PDO::FETCH_ASSOC);
+
 $query2 = "SELECT idVenta FROM Venta;";
 $sql2 = $conn->prepare($query2);
 $sql2->execute();
@@ -18,15 +24,22 @@ $sql6 = $conn->prepare($query6);
 $sql6->execute();
 $cantidadVentasMonto = $sql6->fetchAll(PDO::FETCH_ASSOC);
 
-$query5 = "SELECT idVenta FROM detalleVenta ;";
+$query3 = "SELECT COUNT(*) FROM Usuario WHERE rolUsuario='user';";
+$sql3 = $conn->prepare($query3);
+$sql3->execute();
+$cantidadUsuarios = $sql3->fetchAll(PDO::FETCH_ASSOC);
+
+$query4 = "SELECT COUNT(*) FROM Usuario WHERE rolUsuario='admin';";
+$sql4 = $conn->prepare($query4);
+$sql4->execute();
+$cantidadAdmin = $sql4->fetchAll(PDO::FETCH_ASSOC);
+
+$query5 = "SELECT DISTINCT idVenta FROM detalleVenta;";
 $sql5 = $conn->prepare($query5);
 $sql5->execute();
 $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
 
-$queryResultado = "SELECT * FROM Juego;";
-$sqlResultado = $conn->prepare($queryResultado);
-$sqlResultado->execute();
-$resultado = $sqlResultado->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -45,37 +58,41 @@ $resultado = $sqlResultado->fetchAll(PDO::FETCH_ASSOC);
 <?php }$cantidadVendidosTamaño = count($cantidadVendidosMonto); echo $cantidadVendidos[0];?>
 
 
+
+<?php foreach($cantidadUsuarios as $row) {?>
+        <?php 
+            $usuarios=$row['COUNT(*)'];                          
+        ?>
+<?php }?>
+<?php foreach($cantidadAdmin as $row) {?>
+        <?php 
+            $admins=$row['COUNT(*)'];                          
+        ?>
+<?php }?>
+
 <?php foreach($idVenta as $row) {?>
         <?php 
             $idVentas[]=$row['idVenta']; 
             rsort($idVentas);    
         ?>
 <?php } $tamaño=count($idVentas); echo 'tamaño es:'.$tamaño.'aqui: '.$idVentas[0];?>
+
 <?php 
 for($i =0; $i<$tamaño; $i++){
-    $queryAgrupar = "SELECT idVenta FROM venta GROUP BY idVenta=$idVentas[$i];";
+    $queryAgrupar = "SELECT idVenta FROM venta WHERE idVenta=$idVentas[$i];";
     $sqlAgrupar = $conn->prepare($queryAgrupar);
     $sqlAgrupar->execute();
     $agrupar = $sqlAgrupar->fetchAll(PDO::FETCH_ASSOC);
-      
-}
-foreach($agrupar as $row) {
-     $acomodados[]=$row['idVenta'];
-     rsort($acomodados);                         
-}$tamañoAcomodado=count($acomodados); echo 'tamaño es:'.$tamañoAcomodado.'aqui: '.$acomodados[0];
-    for($i =0; $i<$tamañoAcomodado; $i++){
-        $query7 = "SELECT sum(cantidad) FROM detalleVenta where idVenta=$acomodados[$i] ;";
-        $sql7 = $conn->prepare($query7);
-        $sql7->execute();
-        $cantidadVenta = $sql7->fetchAll(PDO::FETCH_ASSOC);
-        
-        
-    }
-    foreach($cantidadVenta as $row) {
-         $cantidadVendidaJuego[]=$row['sum(cantidad)'];                         
-    }
-?>
 
+    foreach($agrupar as $row) {
+     $acomodados[]=$row['idVenta'];
+     rsort($acomodados);    
+     $tamañoAcomodado[]=count($acomodados);                     
+    } 
+    echo 'tamaño es:'.$tamañoAcomodado[0].'aqui: '.$acomodados[0];
+}
+                       
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -310,18 +327,23 @@ foreach($agrupar as $row) {
   Chart.defaults.global.defaultFontFamily = "Lato";
   Chart.defaults.global.defaultFontSize = 11;
   Chart.defaults.global.defaultFontColor= "black";
-  const labels = [
-    '<?php for($i=0; $i<$cantidadVendidosTamaño; $i++){
-      echo $cantidadVendidos[$i];
-    }?>',
-  ];
-  const datas = [
-    '<?php for($i=0; $i<$cantidadVendidosTamaño; $i++){
-      echo $cantidadVendidosMonto[$i];
-    }?>',
-  ];
   
-  
+  const labels = [];
+
+  <?php 
+  for($i=0; $i<$cantidadVendidosTamaño; $i++){
+        echo "labels.push(".$cantidadVendidos[$i].");" ;
+  }
+      
+  ?>
+
+  const datas = [];
+  <?php 
+  for($i=0; $i<$cantidadVendidosTamaño; $i++){
+        echo "datas.push(".$cantidadVendidosMonto[$i].");" ;
+  }
+  ?>
+
   var speedData = {
     labels: labels,
     datasets: [{
@@ -359,6 +381,11 @@ foreach($agrupar as $row) {
             // Eje x color verde
             color: '#EABE3F',
             display: true
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "idVenta",
+            fontColor: 'black'
           }
         }],
         yAxes: [{
@@ -366,6 +393,11 @@ foreach($agrupar as $row) {
             borderDash: [2, 2], // Eje y color rojo
             color: '#EABE3F',
             display: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Monto",
+            fontColor: 'black'
           }
         }]
       }
@@ -382,54 +414,60 @@ foreach($agrupar as $row) {
   Chart.defaults.global.defaultFontColor= "black";
   
   
-  const labels2 = [
-    '<?php for($i=0; $i<$tamañoAcomodado; $i++){
-      echo $acomodados[$i];
-    }?>',
-  ];
-  const datas2 = [
-    '<?php for($i=0; $i<$tamañoAcomodado; $i++){
-      echo $cantidadVendidaJuego[$i];
-    }?>',
-  ];
+  const labels2 = [];
+
+  <?php 
+  for($i=0; $i<$tamaño; $i++){
+        echo "labels2.push(".$tamañoAcomodado[$i].");" ;
+  }
+      
+  ?>
+
+  const datas2 = [];
+  <?php 
+  for($i=0; $i<$tamaño; $i++){
+        echo "datas2.push(".$idVentas[$i].");" ;
+  }
+      
+  ?>
   var speedData2 = {
     labels: labels2,
     datasets: [{
-      label: "Precio",
+      label: "Cantidad de ventas",
       data: datas2,
-      lineTension: 0.1,
       fill: true,
       borderColor: '#EABE3F',
       backgroundColor: 'rgba(0,0,0,0.9)',
-      pointBorderColor: '#FFECB4',
-      pointBackgroundColor: '#EABE3F',
       borderWidth: 2,
-      pointRadius: 4
     }]
   };
 
 
 
   var lineChart2 = new Chart(speedCanvas2, {
-    type: 'bar',
+    type: 'line',
     data: speedData2,
     options:{
       legend: {
             //display: true,
             labels: {
-             boxWidth: 80,
+             boxWidth: 80
                  
             }
       },
       scales: {
         
         xAxes: [{
-        color: 'black',
           gridLines:{
             borderDash: [2, 2],
-            //Eje x color verde
+            // Eje x color verde
             color: '#EABE3F',
-            display: false
+            display: true
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "idVenta",
+            fontColor: 'black'
           }
         }],
         yAxes: [{
@@ -437,6 +475,11 @@ foreach($agrupar as $row) {
             borderDash: [2, 2], // Eje y color rojo
             color: '#EABE3F',
             display: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Cantidad vendida",
+            fontColor: 'black'
           }
         }]
       }

@@ -28,7 +28,7 @@ $sql4 = $conn->prepare($query4);
 $sql4->execute();
 $cantidadAdmin = $sql4->fetchAll(PDO::FETCH_ASSOC);
 
-$query5 = "SELECT idVenta FROM detalleVenta ;";
+$query5 = "SELECT DISTINCT idVenta FROM detalleVenta;";
 $sql5 = $conn->prepare($query5);
 $sql5->execute();
 $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
@@ -63,35 +63,28 @@ $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
             $admins=$row['COUNT(*)'];                          
         ?>
 <?php }?>
+
 <?php foreach($idVenta as $row) {?>
         <?php 
             $idVentas[]=$row['idVenta']; 
             rsort($idVentas);    
         ?>
 <?php } $tamaño=count($idVentas); echo 'tamaño es:'.$tamaño.'aqui: '.$idVentas[0];?>
+
 <?php 
 for($i =0; $i<$tamaño; $i++){
-    $queryAgrupar = "SELECT idVenta FROM venta GROUP BY idVenta=$idVentas[$i];";
+    $queryAgrupar = "SELECT idVenta FROM venta WHERE idVenta=$idVentas[$i];";
     $sqlAgrupar = $conn->prepare($queryAgrupar);
     $sqlAgrupar->execute();
     $agrupar = $sqlAgrupar->fetchAll(PDO::FETCH_ASSOC);
-      
-}
-foreach($agrupar as $row) {
+
+    foreach($agrupar as $row) {
      $acomodados[]=$row['idVenta'];
-     rsort($acomodados);                         
-}$tamañoAcomodado=count($acomodados); echo 'tamaño es:'.$tamañoAcomodado.'aqui: '.$acomodados[0];
-    for($i =0; $i<$tamañoAcomodado; $i++){
-        $query7 = "SELECT sum(cantidad) FROM detalleVenta where idVenta=$acomodados[$i] ;";
-        $sql7 = $conn->prepare($query7);
-        $sql7->execute();
-        $cantidadVenta = $sql7->fetchAll(PDO::FETCH_ASSOC);
-        
-        
-    }
-    foreach($cantidadVenta as $row) {
-         $cantidadVendidaJuego[]=$row['sum(cantidad)'];                         
-    }
+     rsort($acomodados);    
+     $tamañoAcomodado[]=count($acomodados);                     
+    } 
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,9 +100,7 @@ foreach($agrupar as $row) {
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <link rel="icon" href="img/logo.png" />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  </head>
+    </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -175,7 +166,7 @@ foreach($agrupar as $row) {
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     Usuarios
                                 </a>
-                                <a class="nav-link" href="tablaVentas.php">
+                                <a class="nav-link" href="tablesVentas.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     Ventas
                                 </a>
@@ -183,9 +174,9 @@ foreach($agrupar as $row) {
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     Log
                                 </a>
-                                <a class="nav-link" href="tablaCantidadVentas.php">
+                                <a class="nav-link" href="tablaDetalleVenta.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                    Cantidad de ventas
+                                    Detalle de ventas
                                 </a>
                                 <div class="sb-sidenav-menu-heading">Pagina</div>
                                 <a class="nav-link" href="../index.php">
@@ -222,7 +213,7 @@ foreach($agrupar as $row) {
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
-                                Grafica, top 5 mas vendidos 
+                                Grafica, monto vendido
                             </div>
                             <div class="card-body"><canvas id="graficaVentas" width="100%" height="50"></canvas></div>
                             <div class="card-footer small text-muted"><?php $DateAndTime = date('d/m/Y h:i a', time());  echo "Hasta el momento, $DateAndTime.";?></div>
@@ -232,7 +223,7 @@ foreach($agrupar as $row) {
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        Grafica, top 5 juegos mas caros
+                                        Grafica, cantidad de ventas
                                     </div>
                                     <div class="card-body"><canvas id="graficaJuegosCaros" width="100%" height="50"></canvas></canvas></div>
                                     <div class="card-footer small text-muted"><?php $DateAndTime = date('d/m/Y h:i a', time());  echo "Hasta el momento, $DateAndTime.";?></div>
@@ -247,18 +238,6 @@ foreach($agrupar as $row) {
                                     <div class="card-body"><canvas id="graficaUsuarios" width="100%" height="50"></canvas></div>
                                     <div class="card-footer small text-muted"><?php $DateAndTime = date('d/m/Y h:i a', time());  echo "Hasta el momento, $DateAndTime.";?></div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Grafica, cantidad usuarios
-                                    </div>
-                                    <div>
-                                      <canvas id="miGrafica"></canvas>
-                                    </div>
-                       
-                                  </div>
                             </div>
                         </div>
                         </form>
@@ -297,18 +276,23 @@ foreach($agrupar as $row) {
   Chart.defaults.global.defaultFontFamily = "Lato";
   Chart.defaults.global.defaultFontSize = 11;
   Chart.defaults.global.defaultFontColor= "black";
-  const labels = [
-    '<?php for($i=0; $i<$cantidadVendidosTamaño; $i++){
-      echo $cantidadVendidos[$i];
-    }?>',
-  ];
-  const datas = [
-    '<?php for($i=0; $i<$cantidadVendidosTamaño; $i++){
-      echo $cantidadVendidosMonto[$i];
-    }?>',
-  ];
   
-  
+  const labels = [];
+
+  <?php 
+  for($i=0; $i<$cantidadVendidosTamaño; $i++){
+        echo "labels.push(".$cantidadVendidos[$i].");" ;
+  }
+      
+  ?>
+
+  const datas = [];
+  <?php 
+  for($i=0; $i<$cantidadVendidosTamaño; $i++){
+        echo "datas.push(".$cantidadVendidosMonto[$i].");" ;
+  }
+  ?>
+
   var speedData = {
     labels: labels,
     datasets: [{
@@ -346,6 +330,11 @@ foreach($agrupar as $row) {
             // Eje x color verde
             color: '#EABE3F',
             display: true
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "idVenta",
+            fontColor: 'black'
           }
         }],
         yAxes: [{
@@ -353,6 +342,11 @@ foreach($agrupar as $row) {
             borderDash: [2, 2], // Eje y color rojo
             color: '#EABE3F',
             display: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Monto",
+            fontColor: 'black'
           }
         }]
       }
@@ -369,54 +363,60 @@ foreach($agrupar as $row) {
   Chart.defaults.global.defaultFontColor= "black";
   
   
-  const labels2 = [
-    '<?php for($i=0; $i<$tamañoAcomodado; $i++){
-      echo $acomodados[$i];
-    }?>',
-  ];
-  const datas2 = [
-    '<?php for($i=0; $i<$tamañoAcomodado; $i++){
-      echo $cantidadVendidaJuego[$i];
-    }?>',
-  ];
+  const labels2 = [];
+
+  <?php 
+  for($i=0; $i<$tamaño; $i++){
+        echo "labels2.push(".$tamañoAcomodado[$i].");" ;
+  }
+      
+  ?>
+
+  const datas2 = [];
+  <?php 
+  for($i=0; $i<$tamaño; $i++){
+        echo "datas2.push(".$idVentas[$i].");" ;
+  }
+      
+  ?>
   var speedData2 = {
     labels: labels2,
     datasets: [{
-      label: "Precio",
+      label: "Cantidad de ventas",
       data: datas2,
-      lineTension: 0.1,
       fill: true,
       borderColor: '#EABE3F',
       backgroundColor: 'rgba(0,0,0,0.9)',
-      pointBorderColor: '#FFECB4',
-      pointBackgroundColor: '#EABE3F',
       borderWidth: 2,
-      pointRadius: 4
     }]
   };
 
 
 
   var lineChart2 = new Chart(speedCanvas2, {
-    type: 'bar',
+    type: 'line',
     data: speedData2,
     options:{
       legend: {
             //display: true,
             labels: {
-             boxWidth: 80,
+             boxWidth: 80
                  
             }
       },
       scales: {
         
         xAxes: [{
-        color: 'black',
           gridLines:{
             borderDash: [2, 2],
-            //Eje x color verde
+            // Eje x color verde
             color: '#EABE3F',
-            display: false
+            display: true
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "idVenta",
+            fontColor: 'black'
           }
         }],
         yAxes: [{
@@ -424,6 +424,11 @@ foreach($agrupar as $row) {
             borderDash: [2, 2], // Eje y color rojo
             color: '#EABE3F',
             display: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Cantidad vendida",
+            fontColor: 'black'
           }
         }]
       }
@@ -470,43 +475,4 @@ foreach($agrupar as $row) {
     options:{
     }
   });
-</script>
-
-
-<div>
-  <canvas id="myChart"></canvas>
-</div>
-
-<script>
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-</script>
- 
-<script>
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
 </script>

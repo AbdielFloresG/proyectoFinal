@@ -24,22 +24,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Tablas Admin</title>
-    
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-  
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-  <link href="css/styles.css" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css"/>
-  <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-  
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-
-  
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -67,7 +54,7 @@
             </ul>
         </nav>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
+        <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
@@ -75,22 +62,6 @@
                             <a class="nav-link" href="principal.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                   
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
@@ -107,7 +78,7 @@
                                     </div>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <div class="sb-sidenav-menu-heading">GRAFICAS</div>
                             <a class="nav-link" href="charts.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Graficas
@@ -125,6 +96,14 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Ventas
                             </a>
+                            <a class="nav-link" href="tablaLog.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Log
+                            </a>
+                            <a class="nav-link" href="tablaDetalleVenta.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Detalle de ventas
+                            </a>
                             <div class="sb-sidenav-menu-heading">Pagina</div>
                             <a class="nav-link" href="../index.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-door-closed"></i></div>
@@ -137,7 +116,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
+                        <div class="small">Admin:</div>
                         <?php echo $nombre." ".$apellido."  ";?>
                     </div>
                 </nav>
@@ -169,81 +148,7 @@
                             </div>
                            
                             <div class="card-body">
-<!-- 
                                 <table id="datatablesSimple">
-                                    <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#agregarJuego">
-                                        Agregar juego
-                                    </button>
-                                    <thead>
-                                        <tr>
-                                            <th>idJuego</th>
-                                            <th>Nombre de Juego</th>
-                                            <th>Precio</th>
-                                            <th>Desarrollador</th>
-                                            <th>Genero</th>
-                                            <th>Año de lanzamiento</th>
-                                            <th>Descripcion</th>
-                                            <th>Activo</th>
-                                            <th>Acciones</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>idJuego</th>
-                                            <th>Nombre de Juego</th>
-                                            <th>Precio</th>
-                                            <th>Desarrollador</th>
-                                            <th>Genero</th>
-                                            <th>Año de lanzamiento</th>
-                                            <th>Descripcion</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php foreach($resultado as $row) {?>
-                                            <?php 
-                                                $id = $row['idJuego'];
-                                                $nombreJuego = $row['nombreJuego'];
-                                                $precioJuego = $row['precio'];
-                                                $desarrollador = $row['desarrollador'];
-                                                $genero = $row['genero'];
-                                                $fechaLanzamiento = $row['fechaLanzamiento'];
-                                                $descripcion = $row['descripcion'];
-                                                $activo = $row['activo'];
-
-
-                                            ?>
- 
-                                            <tr>
-                                                <td><?php echo $id;?> </td>
-                                                <td><?php echo $nombreJuego;?> </td>
-                                                <td><?php echo $precioJuego;?> </td>
-                                                <td><?php echo $desarrollador;?> </td>
-                                                <td><?php echo $genero;?> </td>
-                                                <td><?php echo $fechaLanzamiento;?> </td>
-                                                <td><?php echo $descripcion;?> </td>
-                                                <td><?php echo ($activo==1)? "Si" : "No" ?> </td>
-                                                <td> 
-                                                    <button type="button"   id="<?php echo $id;?>" class="btn btn-info col-12  my-1" data-bs-toggle="modal" data-bs-target="#modificarJuego"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreJuego ?>','<?php echo $precioJuego ?>','<?php echo $desarrollador ?>','<?php echo $genero ?>','<?php echo $fechaLanzamiento ?>','<?php echo $descripcion ?>','<?php echo $activo ?>')">
-                                                        Modificar
-                                                    </button>
-                                                    <button type="button"  id="<?php echo $id;?>" class="btn btn-danger col-12  my-1" data-bs-toggle="modal" data-bs-target="#eliminarJuego"   onClick="eliminardatos(<?php echo $id ?>)">
-                                                        Eliminar
-                                                    </button>
-                                                </td>
-                                            </tr>
-
-                                        <?php }?>
-
-                                    </tbody>
-                                </table> -->
-
-
-                                
-
-
-                                <table id="tableJuegos">
                                     <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#agregarJuego">
                                         Agregar juego
                                     </button>
@@ -312,7 +217,6 @@
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </main>
@@ -330,9 +234,6 @@
                 </footer>
             </div>
         </div>
-
-
-        
 
         <script>
             function datos(id,nombre,precio,desarrollador,genero,lanzamiento,descripcion,activo){
@@ -362,49 +263,8 @@
                 //$("#nombreEdit").val(nombre);
             }
 
-        </script>    
+        </script>                                
         
-        <script>
-            // $(document).ready( function () {
-            //     $('#tableJuegos').DataTable();
-            // } );
-
-            $(document).ready(function() {
-            $('#tableJuegos').DataTable({
-                "language": {
-                    "paginate": {
-                        "previous": "Anterior",
-                        "next": "Siguiente",
-                        "last": "Ultima página",
-                        "first": "Primer página",
-                    },
-                    "lengthMenu": "Mostrar MENU registros por pagina",
-                    "zeroRecords": "No se encontro el registro",
-                    "info": "Pagina PAGE de PAGES",
-                    "infoEmpty": "No hay registros disponibles",
-                    "infoFiltered": "(filtrado de un total de MAX registros)",
-                    "sSearch": "Buscar:",
-                    "emptyTable": "Sin datos para mostrar en la tabla"
-                },
-                buttons: [
-                    'pdfHtml5'
-                ],
-                dom: 'Bfrtip',
-            });
-        });
-        </script>
-
-  
-        <script type="text/javascript" src="datatables.min.js"></script>
-        <script type="text/javascript" src="datatables.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-  
-        
-  
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
