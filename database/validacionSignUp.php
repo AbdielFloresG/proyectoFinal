@@ -1,7 +1,7 @@
 
 <?php
+require '../config/config.php';
   require 'conexionSQLI.php';
-  require '../config/config.php';
   $email = $_POST['email'];
   $password = $_POST['password'];
 
@@ -39,7 +39,7 @@
       $stmt->execute();
       $message = 'Successfully created new user';
   
-      header("location: ../login.php");
+      header("location: ../login.php?$passwordCifrada");
 
     }catch(Exception $e){
       $message = 'Sorry there must have been an issue creating your account';

@@ -2,7 +2,7 @@
 
 $server = 'localhost:3306';
 $username = 'root';
-$password = 'ivandiana17';
+$password = 'password';
 $database = 'gameStore';
 
 try {

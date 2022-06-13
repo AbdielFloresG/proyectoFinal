@@ -107,7 +107,9 @@ foreach($agrupar as $row) {
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <link rel="icon" href="img/logo.png" />
-    </head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -245,6 +247,18 @@ foreach($agrupar as $row) {
                                     <div class="card-body"><canvas id="graficaUsuarios" width="100%" height="50"></canvas></div>
                                     <div class="card-footer small text-muted"><?php $DateAndTime = date('d/m/Y h:i a', time());  echo "Hasta el momento, $DateAndTime.";?></div>
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-pie me-1"></i>
+                                        Grafica, cantidad usuarios
+                                    </div>
+                                    <div>
+                                      <canvas id="miGrafica"></canvas>
+                                    </div>
+                       
+                                  </div>
                             </div>
                         </div>
                         </form>
@@ -456,4 +470,43 @@ foreach($agrupar as $row) {
     options:{
     }
   });
+</script>
+
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script>
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+</script>
+ 
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
 </script>

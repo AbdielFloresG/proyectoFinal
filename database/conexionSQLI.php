@@ -3,7 +3,7 @@
 
 $server = 'localhost:3306';
 $username = 'root';
-$password = 'ivandiana17';
+$password = 'password';
 $database = 'gameStore';
 
 $con = mysqli_connect($server, $username, $password,$database);
