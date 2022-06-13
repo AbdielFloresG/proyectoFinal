@@ -1,11 +1,13 @@
 <?php
-
+  require '../config/config.php';
   require 'conexionSQLI.php';
+
   $email = strtolower($_POST['email']);
   $password = $_POST['password'];
 
-  $passwordCifrada = hash_hmac('sha1',$password, KEY_TOKEN);
-
+$passwordCifrada = hash_hmac('sha1',$password, KEY_TOKEN);
+  
+  echo '<br><br><br><br><br>'.$passwordCifrada," aquiiiii";
   $consulta = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$passwordCifrada' LIMIT 1");
   $ejecutarConsulta = mysqli_query($con, $consulta) or die ("No se pudo ejecutar la consulta sql");
 
@@ -50,7 +52,7 @@
       
     }
   } else {
-      header("Location: ../login.php?error=si");
+      header("Location: ../login.php?$passwordCifrada");
       // Usuario incorrecto o no existe
   }
 

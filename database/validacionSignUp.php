@@ -1,6 +1,7 @@
 
 <?php
   require 'conexionSQLI.php';
+  require '../config/config.php';
   $email = $_POST['email'];
   $password = $_POST['password'];
 

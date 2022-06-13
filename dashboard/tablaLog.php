@@ -7,12 +7,10 @@
     $nombre = $_SESSION["nombre"];
     $apellido = $_SESSION["apellido"];
 
-    $query = "SELECT * FROM venta;";
+    $query = "SELECT * FROM Log_;";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-   
 
 ?>
 
@@ -49,7 +47,6 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <?php echo $nombre." ".$apellido."  ";?><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
-                        <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="../database/salir.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
@@ -126,90 +123,55 @@
 
             <div id="layoutSidenav_content">
                 <main>
-                    <!--        Modales         -->
-                    <?php include('../database/modals/agregarJuegoModal.php')?>
-                    <?php include('../database/modals/editarJuegoModal.php')?>
-                    <?php include('../database/modals/eliminarJuegoModal.php')?>
 
-                    
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tablas</h1>
+                        <h1 class="mt-4">Log</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="principal.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
+                            <li class="breadcrumb-item active">Tablas</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                Seccion de tablas de la pagina
+                                Seccion de tablas, captura todos los movimientos realizados
                             </div>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Ventas
+                                Log
                             </div>
                            
                             <div class="card-body">
                                 <table id="datatablesSimple">
-                               
+                                    
                                     <thead>
                                         <tr>
-                                            <th>ID Venta</th>
-                                            <th>ID Usuario</th>
-                                            <th>Fecha</th>
-                                            <th>Descripcion</th>
-                                            <th>Monto</th>
-                                   
+                                            <th>idCambio</th>
+                                            <th>fecha de modificacion</th>
+                                            <th>Descripcion del cambio</th>
 
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>ID Venta</th>
-                                            <th>ID Usuario</th>
-                                            <th>Fecha</th>
-                                            <th>Descripcion</th>
-                                            <th>Monto</th>
-                                            
+                                            <th>idCambio</th>
+                                            <th>fecha de modificacion</th>
+                                            <th>Descripcion del cambio</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-
                                         <?php foreach($resultado as $row) {?>
-                                            
                                             <?php 
-                                                $descripcion="";
-                                                $id = $row['idVenta'];
-                                                $nombreJuego = $row['idUsuario'];
-                                                $precioJuego = $row['fechaVenta'];
-                                                $desarrollador = $row['monto'];
+                                                $idCambio = $row['idCambio'];
+                                                $fechaModificacion = $row['fechaModificacion'];
+                                                $descripcionCambio = $row['descripcionCambio'];
                                                 
-                                                $query2 = "SELECT * FROM detalleVenta WHERE idVenta=$id";
-                                                $sql2 = $conn->prepare($query2);
-                                                $sql2->execute();
-                                                $resultado2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
-                                                foreach($resultado2 as $row2){
-                                                    $descripcion=$descripcion." ".$row2['nombreJuego']."   -   ".$row2['cantidad']."  ||  ";
-                                                }
-
-
                                             ?>
  
                                             <tr>
-                                                <td><?php echo $id;?> </td>
-                                                <td><?php echo $nombreJuego;?> </td>
-                                                <td><?php echo $precioJuego;?> </td>
-                                                <td><?php echo $descripcion?> </td>
-                                                <td><?php echo $desarrollador;?> </td>
-
-                                                <!-- <td> 
-                                                    <button type="button"   id="<?php echo $id;?>" class="btn btn-info col-12  my-1" data-bs-toggle="modal" data-bs-target="#modificarJuego"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreJuego ?>','<?php echo $precioJuego ?>','<?php echo $desarrollador ?>','<?php echo $genero ?>','<?php echo $fechaLanzamiento ?>','<?php echo $descripcion ?>','<?php echo $activo ?>')">
-                                                        Modificar
-                                                    </button>
-                                                    <button type="button"  id="<?php echo $id;?>" class="btn btn-danger col-12  my-1" data-bs-toggle="modal" data-bs-target="#eliminarJuego"   onClick="eliminardatos(<?php echo $id ?>)">
-                                                        Eliminar
-                                                    </button>
-                                                </td> -->
+                                                <td><?php echo $idCambio;?> </td>
+                                                <td><?php echo $fechaModificacion;?> </td>
+                                                <td><?php echo $descripcionCambio;?> </td>
                                             </tr>
 
                                         <?php }?>
@@ -223,11 +185,11 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                            <div class="text-muted">GameStore &copy; Pagina admin 2022</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a>Privacy Policy</a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a>Terms &amp; Conditions</a>
                             </div>
                         </div>
                     </div>
@@ -235,36 +197,7 @@
             </div>
         </div>
 
-        <script>
-            function datos(id,nombre,precio,desarrollador,genero,lanzamiento,descripcion,activo){
-                let inputID = document.getElementById("idJuegoEdit")
-                inputID.setAttribute("value",id)
-                let inputNombre = document.getElementById("nombreEdit")
-                inputNombre.setAttribute("value",nombre)
-                let inputprecio = document.getElementById("precioEdit")
-                inputprecio.setAttribute("value",precio)
-                let inputdesarrollador = document.getElementById("desarrolladorEdit")
-                inputdesarrollador.setAttribute("value",desarrollador)
-                let inputgenero = document.getElementById("generoEdit")
-                inputgenero.setAttribute("value",genero)
-                let inputlanzamiento = document.getElementById("fechaEdit")
-                inputlanzamiento.setAttribute("value",lanzamiento)
-                const inputdescripcion = document.getElementById("descripcionEdit")
-                inputdescripcion.innerHTML = descripcion
-
-                let inputactivo = document.getElementById("activoEdit")
-                inputactivo.setAttribute("value",activo)
-
-                //$("#nombreEdit").val(nombre);
-            }
-            function eliminardatos(id){
-                let inputID = document.getElementById("idJuegoEliminar")
-                inputID.setAttribute("value",id)
-                //$("#nombreEdit").val(nombre);
-            }
-
-        </script>                                
-        
+        <script src="../js/signUp.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
