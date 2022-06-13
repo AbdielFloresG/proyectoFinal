@@ -215,7 +215,7 @@ for($i =0; $i<$tamaño; $i++){
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
-                                        Grafica, top 5 mas vendidos 
+                                        Grafica, monto vendido 
                                     </div>
                                     <div class="card-body"><canvas id="graficaVentas" width="100%" height="40"></canvas></div>
                                 </div>
@@ -224,7 +224,7 @@ for($i =0; $i<$tamaño; $i++){
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        Grafica, top 5 juegos mas caros
+                                        Grafica, cantidad de ventas
                                     </div>
                                     <div class="card-body"><canvas id="graficaJuegosCaros" width="100%" height="40"></canvas></div>
                                 </div>
