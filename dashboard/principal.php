@@ -102,6 +102,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Usuarios
                             </a>
+                            <a class="nav-link" href="tablesVentas.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Ventas
+                            </a>
                             <div class="sb-sidenav-menu-heading">Pagina</div>
                             <a class="nav-link" href="../index.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-door-closed"></i></div>

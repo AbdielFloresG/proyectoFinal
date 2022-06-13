@@ -7,10 +7,12 @@
     $nombre = $_SESSION["nombre"];
     $apellido = $_SESSION["apellido"];
 
-    $query = "SELECT * FROM Juego;";
+    $query = "SELECT * FROM venta;";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+   
 
 ?>
 
@@ -152,51 +154,51 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Juegos
+                                Ventas
                             </div>
                            
                             <div class="card-body">
                                 <table id="datatablesSimple">
-                                    <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#agregarJuego">
-                                        Agregar juego
-                                    </button>
+                               
                                     <thead>
                                         <tr>
-                                            <th>idJuego</th>
-                                            <th>Nombre de Juego</th>
-                                            <th>Precio</th>
-                                            <th>Desarrollador</th>
-                                            <th>Genero</th>
-                                            <th>Año de lanzamiento</th>
+                                            <th>ID Venta</th>
+                                            <th>ID Usuario</th>
+                                            <th>Fecha</th>
                                             <th>Descripcion</th>
-                                            <th>Activo</th>
-                                            <th>Acciones</th>
+                                            <th>Monto</th>
+                                   
 
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>idJuego</th>
-                                            <th>Nombre de Juego</th>
-                                            <th>Precio</th>
-                                            <th>Desarrollador</th>
-                                            <th>Genero</th>
-                                            <th>Año de lanzamiento</th>
+                                            <th>ID Venta</th>
+                                            <th>ID Usuario</th>
+                                            <th>Fecha</th>
                                             <th>Descripcion</th>
-                                            <th>Acciones</th>
+                                            <th>Monto</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody>
+
                                         <?php foreach($resultado as $row) {?>
+                                            
                                             <?php 
-                                                $id = $row['idJuego'];
-                                                $nombreJuego = $row['nombreJuego'];
-                                                $precioJuego = $row['precio'];
-                                                $desarrollador = $row['desarrollador'];
-                                                $genero = $row['genero'];
-                                                $fechaLanzamiento = $row['fechaLanzamiento'];
-                                                $descripcion = $row['descripcion'];
-                                                $activo = $row['activo'];
+                                                $descripcion="";
+                                                $id = $row['idVenta'];
+                                                $nombreJuego = $row['idUsuario'];
+                                                $precioJuego = $row['fechaVenta'];
+                                                $desarrollador = $row['monto'];
+                                                
+                                                $query2 = "SELECT * FROM detalleVenta WHERE idVenta=$id";
+                                                $sql2 = $conn->prepare($query2);
+                                                $sql2->execute();
+                                                $resultado2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
+                                                foreach($resultado2 as $row2){
+                                                    $descripcion=$descripcion." ".$row2['nombreJuego']."   -   ".$row2['cantidad']."  ||  ";
+                                                }
 
 
                                             ?>
@@ -205,19 +207,17 @@
                                                 <td><?php echo $id;?> </td>
                                                 <td><?php echo $nombreJuego;?> </td>
                                                 <td><?php echo $precioJuego;?> </td>
+                                                <td><?php echo $descripcion?> </td>
                                                 <td><?php echo $desarrollador;?> </td>
-                                                <td><?php echo $genero;?> </td>
-                                                <td><?php echo $fechaLanzamiento;?> </td>
-                                                <td><?php echo $descripcion;?> </td>
-                                                <td><?php echo ($activo==1)? "Si" : "No" ?> </td>
-                                                <td> 
+
+                                                <!-- <td> 
                                                     <button type="button"   id="<?php echo $id;?>" class="btn btn-info col-12  my-1" data-bs-toggle="modal" data-bs-target="#modificarJuego"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreJuego ?>','<?php echo $precioJuego ?>','<?php echo $desarrollador ?>','<?php echo $genero ?>','<?php echo $fechaLanzamiento ?>','<?php echo $descripcion ?>','<?php echo $activo ?>')">
                                                         Modificar
                                                     </button>
                                                     <button type="button"  id="<?php echo $id;?>" class="btn btn-danger col-12  my-1" data-bs-toggle="modal" data-bs-target="#eliminarJuego"   onClick="eliminardatos(<?php echo $id ?>)">
                                                         Eliminar
                                                     </button>
-                                                </td>
+                                                </td> -->
                                             </tr>
 
                                         <?php }?>

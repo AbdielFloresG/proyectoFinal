@@ -35,12 +35,12 @@
           <i class="fas fa-bars"></i>
         </button>
         <ul class="nav-menu align-items-center">
-          <li class="nav-menu-item">
+          <!-- <li class="nav-menu-item">
             <a href="categorias.php" class="nav-menu-link nav-link">Categorias</a>
-          </li>
-          <li class="nav-menu-item">
+          </li> -->
+          <!-- <li class="nav-menu-item">
             <a href="aboutUs.php" class="nav-menu-link nav-link">Nosotros</a>
-          </li>
+          </li> -->
           <li class="nav-menu-item">
             <a href="contacto.php" class="nav-menu-link nav-link">Contacto</a>
           </li>

@@ -1,10 +1,12 @@
 <?php
 
   require 'conexionSQLI.php';
-  $email = $_POST['email'];
+  $email = strtolower($_POST['email']);
   $password = $_POST['password'];
 
-  $consulta = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$password' LIMIT 1");
+  $passwordCifrada = hash_hmac('sha1',$password, KEY_TOKEN);
+
+  $consulta = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$passwordCifrada' LIMIT 1");
   $ejecutarConsulta = mysqli_query($con, $consulta) or die ("No se pudo ejecutar la consulta sql");
 
   if(!$ejecutarConsulta){ 
@@ -17,7 +19,7 @@
   if(mysqli_fetch_assoc($ejecutarConsulta)) {
       // el usuario y la pwd son correctas
     //inicio de sesion
-    $consulta2 = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$password' LIMIT 1");
+    $consulta2 = ("SELECT * FROM usuario WHERE correoUsuario = '$email' AND passwordUsuario = '$passwordCifrada' LIMIT 1");
     $resultado = $con->query($consulta2);
     //$ejecutarConsulta2 = mysqli_query($conn, $consulta) or die ("No se pudo ejecutar la consulta sql");
 

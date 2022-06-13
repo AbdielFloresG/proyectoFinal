@@ -5,7 +5,7 @@
   $password = $_POST['password'];
 
   $consulta = ("SELECT * FROM usuario WHERE correoUsuario = '$email' LIMIT 1");
-  $ejecutarConsulta = mysqli_query($conn, $consulta) or die ("No se pudo ejecutar la consulta sql");
+  $ejecutarConsulta = mysqli_query($con, $consulta) or die ("No se pudo ejecutar la consulta sql");
   if(!$ejecutarConsulta){ 
     // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " . 
     header("Location: ../signUp.php?error=si");
@@ -30,9 +30,10 @@
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':name', $_POST['name']);
     $stmt->bindParam(':lastname', $_POST['lastname']);
-    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':email', strtolower($_POST['email']));
+    $passwordCifrada = hash_hmac('sha1',$_POST['password'], KEY_TOKEN);
   //   $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':password', $_POST['password']);
+    $stmt->bindParam(':password',$passwordCifrada);
     try{
       $stmt->execute();
       $message = 'Successfully created new user';
