@@ -64,11 +64,11 @@
         </div>
 
         
-        <div class="container">
-            <div class="table-responsive bg-light p-4">
+        <div class="container formulario">
+            <div class="table-responsive bg-transparent text-light p-4">
                 <table class="table" >
                     <thead>
-                        <tr>
+                        <tr class="text-light">
                             <th>Producto</th>
                             <th>Precio</th>
                             <th>Cantidad</th>
@@ -76,7 +76,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-light">
                         <?php if($lista_carrito == null){
                             echo '<tr><td colspan="5" class="text-center"><b>Carrito vacio</b></td></tr>';
                         } else{
@@ -98,14 +98,14 @@
                             <td>
                                 <div id="subtotal_<?php echo $_id;?>" name="subtotal[]"><?php echo '$'.number_format($subtotal,2,'.',',');?> </div>
                             </td>
-                            <td><a  id="eliminar" class="btn btn-warning" data-bs-id="<?php echo $_id;?>" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</a></td>
+                            <td><a  id="eliminar" class="btn btn-warning " data-bs-id="<?php echo $_id;?>" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</a></td>
                         </tr>
                         <?php }?>
 
                         <tr>
                             <td colspan="3"></td>
                             <td colspan="2">
-                                <p class="h3" id="total">Total a pagar: <?php echo "$".number_format($total,2,'.',',');?></p>
+                                <p class="h3 " id="total">Total a pagar: <?php echo "$".number_format($total,2,'.',',');?></p>
                             </td>
                         </tr>
 
@@ -116,7 +116,7 @@
             <?php if($lista_carrito != null){ ?>
                 <div class="row">
                     <div class="col-md-5 offset-md-7 d-grid gap-2">
-                        <a href="pagoLocal.php" class="btn btn-warning btn-lg my-4">Realizar pago</a>
+                        <a href="pagoLocal.php" class="btn btn-warning btn-lg my-4 mx-3 fs-2">Realizar pago</a>
                     </div>
                 </div>
             <?php }?>

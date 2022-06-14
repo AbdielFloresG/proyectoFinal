@@ -15,7 +15,10 @@
     <link rel = "stylesheet" href = "bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
-    <?php include('navbar.php')?>
-    <?php include('footer.php')?>
+ 
+    <?php  include('navbar.php'); ?>
+    <?php
+        include("footer.php")
+    ?>
 </body>
 </html>

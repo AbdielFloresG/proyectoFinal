@@ -24,6 +24,10 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Tablas Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -184,7 +188,7 @@
                                             <th>Nombre usuario</th>
                                             <th>Apellido usuario</th>
                                             <th>Correo usuario</th>
-                                            <th>Password</th>
+                                            <!-- <th>Password</th> -->
                                             <th>Rol usuario</th>
 
                                         </tr>
@@ -195,7 +199,7 @@
                                             <th>Nombre usuario</th>
                                             <th>Apellido usuario</th>
                                             <th>Correo usuario</th>
-                                            <th>Password</th>
+                                            <!-- <th>Password</th> -->
                                             <th>Rol usuario</th>
                                         </tr>
                                     </tfoot>
@@ -206,7 +210,7 @@
                                                 $nombreUsuario = $row['nombreUsuario'];
                                                 $apellidoUsuario = $row['apellidoUsuario'];
                                                 $correoUsuario = $row['correoUsuario'];
-                                                $password = $row['passwordUsuario'];
+                                                //$password = $row['passwordUsuario'];
                                                 $rolUsuario = $row['rolUsuario'];
   
 
@@ -218,7 +222,7 @@
                                                 <td><?php echo $nombreUsuario;?> </td>
                                                 <td><?php echo $apellidoUsuario;?> </td>
                                                 <td><?php echo $correoUsuario;?> </td>
-                                                <td><?php echo $password;?> </td>
+                                               <!-- <td><?php //echo $password;?> </td> -->
                                                 <td><?php echo $rolUsuario;?> </td>
                                                 <td> 
                                                     <button type="button"   id="<?php echo $id;?>" class="btn btn-info col-12  my-1 px-0" data-bs-toggle="modal" data-bs-target="#modificarUsuario"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreUsuario ?>','<?php echo $apellidoUsuario ?>','<?php echo $correoUsuario ?>','<?php echo $password ?>','<?php echo $rolUsuario ?>')">

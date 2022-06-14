@@ -6,6 +6,7 @@ require 'config/config.php';
 
     $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null;
     $idUsuario = $_SESSION["idUsuario"];
+    $correoUsuario = $_SESSION["email"];
   
    
     
@@ -55,7 +56,7 @@ require 'config/config.php';
         }
 
         $dt = date('Y-m-d h:i:s');
-        $query = "INSERT INTO Venta Values (0,$idUsuario,'$dt',$total)";
+        $query = "INSERT INTO Venta Values (0,$idUsuario,'$correoUsuario','$dt',$total)";
         $sql = $conn->prepare($query);
         $sql->execute();
 

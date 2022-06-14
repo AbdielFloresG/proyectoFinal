@@ -24,6 +24,31 @@ body{
 
 /*  ----------- NavBar propio*/
 
+.header {
+  background-color: #000;
+
+  top: 0;
+  padding: 0 0;
+  
+
+}
+nav{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 0;
+}
+
+.logo{
+  font-size: x-large;
+}
+.nav a{
+  color: var(--dorado);
+}
+
+
+/* 
+
+
 
 .header {
     background-color: #000;
@@ -114,7 +139,8 @@ body{
   }
   
   /* TOGGLE */
-  .nav-toggle {
+
+  /* .nav-toggle {
     color: white;
     background: none;
     border: none;
@@ -152,8 +178,8 @@ body{
 
 
   }
-
-
+ 
+ */
 
 /*----------------*/
 

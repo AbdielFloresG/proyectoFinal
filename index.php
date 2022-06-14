@@ -30,7 +30,12 @@
 
 <?php  include('navbar.php'); ?>
 
+
 <main>
+    <?php  include('modales/agregadoCarrito.php'); ?>
+
+
+    
     <div class="container containerDesc">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  row-cols-lg-4 row-cols-xl-5 g-4">
             <?php foreach($resultado as $row) { ?>
@@ -55,7 +60,7 @@
                                     <a href="detalleJuego.php?id=<?php echo $row['idJuego'];?>&token=<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>   " class="btn btn-primary py-3">Detalles</a>
                                     
                                 </div>
-                                <button class="btn btn-dark"  type="button"  onclick="addProducto(<?php echo $row['idJuego'];?>,'<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>')" >Agregar al carrito</button>
+                                <button class="btn btn-dark"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="addProducto(<?php echo $row['idJuego'];?>,'<?php echo hash_hmac('sha1',$row['idJuego'],KEY_TOKEN);?>')" >Agregar al carrito</button>
                             </div>
                         </div>
                     </div>

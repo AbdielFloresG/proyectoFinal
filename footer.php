@@ -1,5 +1,5 @@
 <footer class = "bg-black">
-        <div class = "containerFooter">
+        <div class = "containerFooter sticky-bottom">
             <div class = "row text-white g-4">
                 <div class = "col-md-6 col-lg-3">
                     <img src="img/logo.png"  class = "fas fa-chevron-right me-1"></i>
