@@ -5,7 +5,7 @@
   $password = $_POST['password'];
 
   $consulta = ("SELECT * FROM usuario WHERE correoUsuario = '$email' LIMIT 1");
-  $ejecutarConsulta = mysqli_query($conn, $consulta) or die ("No se pudo ejecutar la consulta sql");
+  $ejecutarConsulta = mysqli_query($con, $consulta) or die ("No se pudo ejecutar la consulta sql");
   if(!$ejecutarConsulta){ 
     // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " . 
     header("Location: ../signUp.php?error=si");

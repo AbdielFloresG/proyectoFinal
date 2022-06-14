@@ -14,15 +14,6 @@ $sqlResultado = $conn->prepare($queryResultado);
 $sqlResultado->execute();
 $resultado = $sqlResultado->fetchAll(PDO::FETCH_ASSOC);
 
-$query2 = "SELECT idVenta FROM Venta;";
-$sql2 = $conn->prepare($query2);
-$sql2->execute();
-$cantidadVentas = $sql2->fetchAll(PDO::FETCH_ASSOC);
-
-$query6 = "SELECT monto FROM venta;";
-$sql6 = $conn->prepare($query6);
-$sql6->execute();
-$cantidadVentasMonto = $sql6->fetchAll(PDO::FETCH_ASSOC);
 
 $query3 = "SELECT COUNT(*) FROM Usuario WHERE rolUsuario='user';";
 $sql3 = $conn->prepare($query3);
@@ -40,35 +31,38 @@ $sql5->execute();
 $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
 
 
+$query2 = "SELECT monto FROM Venta;";
+$sql2 = $conn->prepare($query2);
+$sql2->execute();
+$cantidadVentas = $sql2->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 <?php foreach($cantidadVentas as $row) {?>
         <?php 
-            $cantidadVendidos []= $row['idVenta']; 
+            $cantidadVendidos []= $row['monto']; 
             rsort($cantidadVendidos);                             
         ?>
-<?php }$cantidadVendidosTamaño = count($cantidadVendidos); echo $cantidadVendidos[0];?>
+<?php }$cantidadVendidosTamaño = count($cantidadVendidos);?>
 
-<?php foreach($cantidadVentasMonto as $row) {?>
-        <?php 
-            $cantidadVendidosMonto []= $row['monto']; 
-            rsort($cantidadVendidosMonto);                             
-        ?>
-<?php }$cantidadVendidosTamaño = count($cantidadVendidosMonto); echo $cantidadVendidos[0];?>
+<?php 
+$montoAnterior=0;
+      for($i=0; $i<$cantidadVendidosTamaño; $i++){
+                $query6 = "SELECT idVenta FROM venta WHERE monto=$cantidadVendidos[$i];";
+                $sql6 = $conn->prepare($query6);
+                $sql6->execute();
+                $cantidadVentasMonto = $sql6->fetchAll(PDO::FETCH_ASSOC);
+                if($montoAnterior==$cantidadVendidos[$i]){
 
-
-
-<?php foreach($cantidadUsuarios as $row) {?>
-        <?php 
-            $usuarios=$row['COUNT(*)'];                          
-        ?>
-<?php }?>
-<?php foreach($cantidadAdmin as $row) {?>
-        <?php 
-            $admins=$row['COUNT(*)'];                          
-        ?>
-<?php }?>
+                }else{
+                  foreach($cantidadVentasMonto as $row) {
+                    $cantidadVendidosMonto []= $row['idVenta'];
+                    $montoAnterior=$cantidadVendidos[$i];                   
+                  };
+                }
+      }
+        
+?>
 
 <?php foreach($idVenta as $row) {?>
         <?php 
@@ -79,21 +73,16 @@ $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
 
 <?php 
 for($i =0; $i<$tamaño; $i++){
-    $queryAgrupar = "SELECT idVenta FROM venta WHERE idVenta=$idVentas[$i];";
+    $queryAgrupar = "SELECT count(idVenta) FROM detalleVenta WHERE idVenta=$idVentas[$i];";
     $sqlAgrupar = $conn->prepare($queryAgrupar);
     $sqlAgrupar->execute();
     $agrupar = $sqlAgrupar->fetchAll(PDO::FETCH_ASSOC);
-
-    foreach($agrupar as $row) {
-     $acomodados[]=$row['idVenta'];
-     rsort($acomodados);    
-     $tamañoAcomodado[]=count($acomodados);                     
+   foreach($agrupar as $row) {
+     $acomodados[]=$row['count(idVenta)'];                   
     } 
-    echo 'tamaño es:'.$tamañoAcomodado[0].'aqui: '.$acomodados[0];
 }
-                       
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -215,7 +204,7 @@ for($i =0; $i<$tamaño; $i++){
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
-                                        Grafica, monto vendido 
+                                        Grafica, monto vendido
                                     </div>
                                     <div class="card-body"><canvas id="graficaVentas" width="100%" height="40"></canvas></div>
                                 </div>
@@ -332,7 +321,7 @@ for($i =0; $i<$tamaño; $i++){
 
   <?php 
   for($i=0; $i<$cantidadVendidosTamaño; $i++){
-        echo "labels.push(".$cantidadVendidos[$i].");" ;
+        echo "labels.push(".$cantidadVendidosMonto[$i].");" ;
   }
       
   ?>
@@ -340,7 +329,7 @@ for($i =0; $i<$tamaño; $i++){
   const datas = [];
   <?php 
   for($i=0; $i<$cantidadVendidosTamaño; $i++){
-        echo "datas.push(".$cantidadVendidosMonto[$i].");" ;
+        echo "datas.push(".$cantidadVendidos[$i].");" ;
   }
   ?>
 
@@ -418,7 +407,7 @@ for($i =0; $i<$tamaño; $i++){
 
   <?php 
   for($i=0; $i<$tamaño; $i++){
-        echo "labels2.push(".$tamañoAcomodado[$i].");" ;
+        echo "labels2.push(".$idVentas[$i].");" ;
   }
       
   ?>
@@ -426,7 +415,7 @@ for($i =0; $i<$tamaño; $i++){
   const datas2 = [];
   <?php 
   for($i=0; $i<$tamaño; $i++){
-        echo "datas2.push(".$idVentas[$i].");" ;
+        echo "datas2.push(".$acomodados[$i].");" ;
   }
       
   ?>

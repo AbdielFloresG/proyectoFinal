@@ -8,15 +8,9 @@ require '../database/sessionAdmin.php';
 $nombre = $_SESSION["nombre"];
 $apellido = $_SESSION["apellido"];
 
-$query2 = "SELECT idVenta FROM Venta;";
-$sql2 = $conn->prepare($query2);
-$sql2->execute();
-$cantidadVentas = $sql2->fetchAll(PDO::FETCH_ASSOC);
 
-$query6 = "SELECT monto FROM venta;";
-$sql6 = $conn->prepare($query6);
-$sql6->execute();
-$cantidadVentasMonto = $sql6->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 $query3 = "SELECT COUNT(*) FROM Usuario WHERE rolUsuario='user';";
 $sql3 = $conn->prepare($query3);
@@ -33,23 +27,38 @@ $sql5 = $conn->prepare($query5);
 $sql5->execute();
 $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
 
-
+$query2 = "SELECT monto FROM Venta;";
+$sql2 = $conn->prepare($query2);
+$sql2->execute();
+$cantidadVentas = $sql2->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 <?php foreach($cantidadVentas as $row) {?>
         <?php 
-            $cantidadVendidos []= $row['idVenta']; 
+            $cantidadVendidos []= $row['monto']; 
             rsort($cantidadVendidos);                             
         ?>
-<?php }$cantidadVendidosTamaño = count($cantidadVendidos); echo $cantidadVendidos[0];?>
+<?php }$cantidadVendidosTamaño = count($cantidadVendidos);?>
 
-<?php foreach($cantidadVentasMonto as $row) {?>
-        <?php 
-            $cantidadVendidosMonto []= $row['monto']; 
-            rsort($cantidadVendidosMonto);                             
-        ?>
-<?php }$cantidadVendidosTamaño = count($cantidadVendidosMonto); echo $cantidadVendidos[0];?>
+<?php 
+$montoAnterior=0;
+      for($i=0; $i<$cantidadVendidosTamaño; $i++){
+                $query6 = "SELECT idVenta FROM venta WHERE monto=$cantidadVendidos[$i];";
+                $sql6 = $conn->prepare($query6);
+                $sql6->execute();
+                $cantidadVentasMonto = $sql6->fetchAll(PDO::FETCH_ASSOC);
+                if($montoAnterior==$cantidadVendidos[$i]){
+
+                }else{
+                  foreach($cantidadVentasMonto as $row) {
+                    $cantidadVendidosMonto []= $row['idVenta'];
+                    $montoAnterior=$cantidadVendidos[$i];                   
+                  };
+                }
+      }
+        
+?>
 
 
 
@@ -69,19 +78,16 @@ $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
             $idVentas[]=$row['idVenta']; 
             rsort($idVentas);    
         ?>
-<?php } $tamaño=count($idVentas); echo 'tamaño es:'.$tamaño.'aqui: '.$idVentas[0];?>
+<?php } $tamaño=count($idVentas); ?>
 
 <?php 
 for($i =0; $i<$tamaño; $i++){
-    $queryAgrupar = "SELECT idVenta FROM venta WHERE idVenta=$idVentas[$i];";
+    $queryAgrupar = "SELECT count(idVenta) FROM detalleVenta WHERE idVenta=$idVentas[$i];";
     $sqlAgrupar = $conn->prepare($queryAgrupar);
     $sqlAgrupar->execute();
     $agrupar = $sqlAgrupar->fetchAll(PDO::FETCH_ASSOC);
-
-    foreach($agrupar as $row) {
-     $acomodados[]=$row['idVenta'];
-     rsort($acomodados);    
-     $tamañoAcomodado[]=count($acomodados);                     
+   foreach($agrupar as $row) {
+     $acomodados[]=$row['count(idVenta)'];                   
     } 
 }
 
@@ -102,7 +108,7 @@ for($i =0; $i<$tamaño; $i++){
         <link rel="icon" href="img/logo.png" />
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="principal.php">GameStore Admin</a>
             <!-- Sidebar Toggle-->
@@ -117,12 +123,11 @@ for($i =0; $i<$tamaño; $i++){
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $nombre." ".$apellido."  ";?><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <?php echo $nombre." ".$apellido."  ";?><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!">Configuración</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="../database/salir.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -281,7 +286,7 @@ for($i =0; $i<$tamaño; $i++){
 
   <?php 
   for($i=0; $i<$cantidadVendidosTamaño; $i++){
-        echo "labels.push(".$cantidadVendidos[$i].");" ;
+        echo "labels.push(".$cantidadVendidosMonto[$i].");" ;
   }
       
   ?>
@@ -289,7 +294,7 @@ for($i =0; $i<$tamaño; $i++){
   const datas = [];
   <?php 
   for($i=0; $i<$cantidadVendidosTamaño; $i++){
-        echo "datas.push(".$cantidadVendidosMonto[$i].");" ;
+        echo "datas.push(".$cantidadVendidos[$i].");" ;
   }
   ?>
 
@@ -367,7 +372,7 @@ for($i =0; $i<$tamaño; $i++){
 
   <?php 
   for($i=0; $i<$tamaño; $i++){
-        echo "labels2.push(".$tamañoAcomodado[$i].");" ;
+        echo "labels2.push(".$idVentas[$i].");" ;
   }
       
   ?>
@@ -375,7 +380,7 @@ for($i =0; $i<$tamaño; $i++){
   const datas2 = [];
   <?php 
   for($i=0; $i<$tamaño; $i++){
-        echo "datas2.push(".$idVentas[$i].");" ;
+        echo "datas2.push(".$acomodados[$i].");" ;
   }
       
   ?>
@@ -449,8 +454,8 @@ for($i =0; $i<$tamaño; $i++){
     'Admins'
   ];
   const datas3 = [
-    '<?php echo $admins?>',
-    '<?php echo $usuarios?>'
+    '<?php echo $usuarios?>',
+    '<?php echo $admins?>'
   ]; 
   
   var speedData3 = {
