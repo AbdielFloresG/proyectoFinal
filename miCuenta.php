@@ -1,6 +1,11 @@
 <?php
     require 'database/session.php';
     require 'config/config.php';
+
+
+    if($_SESSION['nombre']=="Invitado"){
+        header("Location: login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,11 +18,12 @@
     <link rel = "stylesheet" href = "bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
-    <?php include('navbar.php')?>
 
+    <?php include('navbar.php')?>
+    <?php include('database/modals/editarUsuarioModal.php')?>
 
     <div class="miCuenta">
-        <h2>Mi Cuenta</h2>
+        <h1>Mi Cuenta</h1>
         <p>
             <?php
                 echo $_SESSION['nombre']." ".$_SESSION['apellido'];
@@ -25,9 +31,14 @@
         </p>
         <p>
             <?php
-                echo $_SESSION['email'];
+                // echo $_SESSION['email'];
             ?>
         </p>
+
+        <!-- <button type="button"  id="<?php echo $_SESSION['idUsuario'];?>" class="nav-menu-link nav-link" data-bs-toggle="modal" data-bs-target="#modificarUsuario"  onClick="datos(<?php echo $id ?>,'<?php echo $nombreUsuario ?>','<?php echo $apellidoUsuario ?>','<?php echo $correoUsuario ?>','<?php echo $password ?>','<?php echo $rolUsuario ?>')">
+            Editar cuenta
+        </button> -->
+        <a href="misPedidos.php" class="nav-menu-link nav-link">Mis pedidos</a>
         <a href="database/salir.php" class="nav-menu-link nav-link">Cerrar sesión</a>
     </div>
 

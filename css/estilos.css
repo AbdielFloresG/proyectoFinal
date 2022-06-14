@@ -20,6 +20,12 @@ body{
   
 }
 
+/* --------------- Carrusel */
+
+.carrusel{
+  max-height: 300px;
+}
+
 
 
 /*  ----------- NavBar propio*/
@@ -315,8 +321,8 @@ footer a:hover{
   border-radius: 10px;
 }
 
-.miCuenta h2{
-  margin: 1%;
+.miCuenta h1{
+  margin: 0 auto 6%;
 }
 .miCuenta p{
   margin: inherit;
@@ -327,13 +333,57 @@ footer a:hover{
 .miCuenta a{
   background-color: var(--dorado);
   color: #000;
-  margin: auto;
+  margin: 4% auto;
   width: 50%;
   font-size: x-large;
   border-style: solid;
   border-color: var(--dorado);
 }
 .miCuenta a:hover{
+  background-color: var(--doradoDifuminado);
+  border-color: var(--doradoDifuminado);
+  color: #000;
+}
+.miCuenta button{
+  background-color: var(--dorado);
+  color: #000;
+  margin: 4% auto;
+  width: 50%;
+  font-size: x-large;
+  border-style: solid;
+  border-color: var(--dorado);
+}
+
+.misCompras{
+  position: relative;
+  margin: 50px auto;
+  text-align: center;
+  width: 90%;
+  max-width: 1200px;
+  padding: 10px 10px;
+  color: var(--dorado);
+  border-radius: 10px;
+}
+
+.misCompras h1{
+  margin: 0 auto 6%;
+}
+.misCompras p{
+  margin: inherit;
+  margin: 2% 1%;
+  color: white;
+  font-size: xx-large;
+}
+.misCompras a{
+  background-color: var(--dorado);
+  color: #000;
+  margin: 4% auto;
+  width: 50%;
+  font-size: x-large;
+  border-style: solid;
+  border-color: var(--dorado);
+}
+.misCompras a:hover{
   background-color: var(--doradoDifuminado);
   border-color: var(--doradoDifuminado);
   color: #000;
