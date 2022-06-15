@@ -1,8 +1,14 @@
+<!-- Tienda GameStore 
+Esta es la pagina para crear una nueva cuenta
+codigo realizado por Abdiel Flores Gastelum
+el 10/06/22 -->
+
+<!-- Archivos requeridos para el funcionamiento del index -->
 <?php
     require 'database/session.php';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,17 +24,16 @@
     
 </head>
 <body>
-    
+    <!-- Se incluye el navbar de la pagina -->
     <?php
         include("navbar.php");
     ?>
 
-
     <div class="formulario">
         <h2>Crear cuenta</h2>
-
+        <!-- Inicio del formulario para crear cuenta -->
         <form id="formSignUp"action="database/validacionSignUp.php" method="POST">
-
+            
             <label for="name">Nombre:</label>
             <input type="text" name="name" required="true" placeholder="Ingresa tu nombre" />
             <label for="lastname">Apellidos:</label>
@@ -50,10 +55,11 @@
     </div>
 
 
+    <!-- Se incluye el footer de la pagina -->
     <?php
         include("footer.php")
     ?>
-    
+    <!-- Se incluye el archivo de las validaciones Javascript del formulario -->
     <script src="js/signUp.js"></script>
 </body>
 </html>

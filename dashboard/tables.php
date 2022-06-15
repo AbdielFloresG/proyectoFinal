@@ -1,3 +1,8 @@
+<!-- Tienda GameStore 
+Este es el archivo de las tablas de 
+codigo realizado por Abdiel Flores Gastelum
+el 10/06/22 --> 
+
 <?php
 
     require '../database/conexionSQLI.php';

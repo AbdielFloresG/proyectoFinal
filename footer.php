@@ -1,3 +1,11 @@
+<!-- Tienda GameStore 
+Este archivo contiene el footer de la pagina 
+y es invocado en casi todas las ventanas de la pagina 
+codigo realizado por Abdiel Flores Gastelum
+el 10/06/22 -->
+
+
+<!-- clase de bootstrap -->
 <footer class = "bg-black">
         <div class = "containerFooter sticky-bottom">
             <div class = "row text-white g-4">

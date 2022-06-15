@@ -1,9 +1,20 @@
+<!-- Tienda GameStore 
+Este es el index de la pagina web 
+codigo realizado por Abdiel Flores Gastelum
+el 10/06/22 -->
+
+
 <?php
+    //Archivos requeridos para el funcionamiento del index
+
+    // Se encarga de la conexion sql mediante PDO
     require 'database/conexion.php';
+    //Se cargan los archivos de la seesion
     require 'database/session.php';
+    //Se cargan las variables del archivo config
     require 'config/config.php';
 
-    //Se crea el query
+    //Se crea el query, se ejecuta y se procesa el resultado
     $query = "SELECT idJuego, nombreJuego, precio FROM Juego WHERE activo=1;";
     $sql = $conn->prepare($query);
     $sql->execute();
@@ -30,46 +41,17 @@
 </head>
 <body>
 
+<!-- Se incluye el archivo de navbar -->
 <?php  include('navbar.php'); ?>
 
 
 <main>
+    <!-- Se incluye el modal (Aviso de que se agregó al carrito) -->
     <?php  include('modales/agregadoCarrito.php'); ?>
-<!-- 
-    <div class="carrusel" >
-      <div id="carouselExampleIndicators" class="carousel slide" style="height: 300px;" data-bs-ride="true">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="img/productos/1/alt.jpg" class="d-block w-100 h-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
 
-    </div> -->
-
-  
-            
+    <!-- Se hace un foreach por cada producto activo para mostrarlo en el index -->
     <div class="container containerDesc">
-
+        <!-- Se divide en columnas el index-->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  row-cols-lg-4 row-cols-xl-5 g-4">
             <?php foreach($resultado as $row) { ?>
                 <div class="col align-items-stretch d-block ">
@@ -105,10 +87,11 @@
 
 </main>
 
-
+<!-- Se incluye el archivo del footer -->
 <?php include('footer.php'); ?>
 
     <script>
+        // Funcion para agregar productos al carrito
         function addProducto(id,token){
             let url = 'clases/carrito.php'
             let formData = new FormData()

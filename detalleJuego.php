@@ -1,24 +1,33 @@
+<!-- Tienda GameStore 
+Esta es la pagina para mostrar los detalles 
+del juego seleccionado
+codigo realizado por Abdiel Flores Gastelum
+el 10/06/22 -->
 <?php
+    // Se agregan los archivos obligatorios para el funcionamiento de la pagina
     require 'database/conexion.php';
     require 'database/session.php';
     require 'config/config.php';
     
 
-
+    // Para generar la pagina se envia un token desde el index 
+    // y se tiene que comparar con un generado en este archivo y comprobar que sea igual
     $id = isset($_GET['id']) ? $_GET['id'] : '' ;
     $token = isset($_GET['token']) ? $_GET['token'] : '';
 
     //Se crea el query
 
-
+    // Si el token viene vacion se envia a esta pagina
     if($id == '' || $token ==''){
         header("Location: dashboard/404.html");
         exit;
     }else{
+        
         $token_tmp = hash_hmac('sha1',$id, KEY_TOKEN);
-
+        // Si coincide
         if($token == $token_tmp){
 
+            // Se hace el query para obtener la informacion del juego
             $query = "SELECT count(idJuego) FROM Juego WHERE idJuego=? AND activo=1;";
             $sql = $conn->prepare($query);
             $sql->execute([$id]);
@@ -44,7 +53,7 @@
                 
             }
            
-
+        // Si no coincide el token se envia a esta pagina
         }else{
             header("Location: dashboard/404.html");
         }
