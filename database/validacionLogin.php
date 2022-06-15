@@ -50,7 +50,7 @@
       
     }
   } else {
-    header("Location: ../login.php?$passwordCifrada");
+    header("Location: ../login.php?error=si");
       //header("Location: ../login.php?error=si");
       // Usuario incorrecto o no existe
   }

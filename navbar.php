@@ -30,7 +30,7 @@ el 10/06/22 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
 <link rel = "stylesheet" href = "css/estilos.css">
-<script defer src="js/navbar.js"></script>
+
 
 <!-- Inicio del navbar -->
 <header class="header">
@@ -47,16 +47,17 @@ el 10/06/22 -->
 
           <div class="collapse navbar-collapse " id="navbarCollapse">
               <div class="navbar-nav  ms-auto text-danger">
-                  <a href="contacto.php" class="nav-item nav-link" style="color:#EABE3F;">Contacto</a>
+                <a href="juegos.php" class="nav-item nav-link" style="color:#EABE3F;">Juegos</a>
+                <a href="contacto.php" class="nav-item nav-link" style="color:#EABE3F;">Contacto</a>
 
-                  <a href=<?php echo $ruta?> class="nav-menu-link nav-link" style="color:#EABE3F;">
-                    <?php echo $texto;?>
-                  </a>
-                  
-                  <a href="checkout.php" class="nav-menu-link nav-link" aria-label="Carrito">
-                    <i class="fas fa-shopping-cart" style="color:#EABE3F;"></i>
-                    <span id="num_cart" class="badge bg-danger"><?php echo $num_cart?></span>
-                  </a>
+                <a href=<?php echo $ruta?> class="nav-menu-link nav-link" style="color:#EABE3F;">
+                  <?php echo $texto;?>
+                </a>
+                
+                <a href="checkout.php" class="nav-menu-link nav-link" aria-label="Carrito">
+                  <i class="fas fa-shopping-cart" style="color:#EABE3F;"></i>
+                  <span id="num_cart" class="badge bg-danger"><?php echo $num_cart?></span>
+                </a>
               </div>
           </div>
         </div>

@@ -13,6 +13,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    align-items: center;
   }
 body{
     font-family: var(--sm-font);
@@ -20,13 +21,38 @@ body{
   
 }
 
-/* --------------- Carrusel */
-
-.carrusel{
-  max-height: 300px;
+.titulos{
+  text-align: center;
+  width: 30%;
+  margin: 2rem auto 1rem;
+  color: var(--dorado);
+  
+}
+.titulos p{
+  color: #fff;
+  align-items: center;
+  box-sizing: content-box;
+  margin: auto;
+  font-size: 200%;
 }
 
 
+/* media queries */
+@media(max-width: 400px){
+  .titulos{
+    text-align: center;
+    width: 60%;
+    margin: 2rem auto 1rem;
+    color: var(--dorado);
+    
+  }
+  .titulos p{
+    align-items: center;
+    box-sizing: content-box;
+    margin: auto;
+    font-size: 100%;
+  }
+}
 
 /*  ----------- NavBar propio*/
 
