@@ -1,3 +1,9 @@
+<!-- Tienda GameStore 
+Esta es la pagina para enviar un 
+formulario de contacto
+codigo realizado por Ivan Martin Aviles
+el 10/06/22 -->
+
 <?php
     require 'config/config.php';
     require 'database/conexion.php';

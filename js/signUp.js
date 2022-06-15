@@ -1,3 +1,8 @@
+// Tienda GameStore 
+// Este codigo valida los datos de crear cuenta
+// codigo realizado por Abdiel Flores Gastelum
+// el 10/06/22 
+
 validarDatosSignUp = () =>{
 
     let verificar = true;
