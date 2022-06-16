@@ -34,9 +34,11 @@ el 10/06/22 -->
 <body>
 
 <?php  include('navbar.php'); ?>
+<?php  include('modales/correoEnviado.php'); ?>
+<?php  include('modales/correoNoEnviado.php'); ?>
 
 <main>
-    <h1 class="titulos">Contactanos</h1>
+    <h1 class="titulos">Contáctanos</h1>
 
     <div class="contact-wrapper">
         <div class="contact-info">
@@ -45,35 +47,62 @@ el 10/06/22 -->
             </div>
             <div class="contact-form">
 
-                <form action="">
+                <form  id="formContacto" action="correo.php" method="post">
                     <p>
                         <label>Nombre completo</label>
-                        <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+                        <input type="text" name="nombreContacto" id="nombreContacto"  placeholder="Ingresa tu nombre" required="true">
                     </p>
                     <p>
                         <label>Correo electrónico</label>
-                        <input type="email" name="email" placeholder="Ingresa tu correo electrónico">
+                        <input type="email" name="emailContacto"  id="emailContacto" placeholder="Ingresa tu correo electrónico" required="true">
                     </p>
                     <p>
                         <label>Asunto</label>
-                        <input type="text" name="asunto" placeholder="Ingresa el asunto">
+                        <input type="text" name="asuntoContacto" id="asuntoContacto" placeholder="Ingresa el asunto" required="true">
                     </p>
                     <p class="block">
                     <label>Mensaje</label> 
-                        <textarea name="mensaje" rows="3" placeholder="Ingresa el mensaje"></textarea>
+                        <textarea name="mensajeContacto" id="mensajeContacto" rows="3" placeholder="Ingresa el mensaje" required="true"></textarea>
                     </p>
                     <p class="block">
-                        <button>
-                            Send
-                        </button>
+                        <button id="btn-contacto"> Enviar </button>
                     </p>
                 </form>
             </div>
         </div>
     </div>
 
+    <?php include('correo.php');?>
 
 </main>
+
+<?php 
+    error_reporting(E_ALL | E_NOTICE);
+    if(isset($_GET["success"])){
+        if($_GET["success"]=="si"){ ?>
+            <script type="text/javascript">
+                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
+                myModal.show()
+            </script>   
+<?php  }   }?>
+
+<?php 
+    error_reporting(E_ALL | E_NOTICE);
+    if(isset($_GET["empty"])){
+        if($_GET["empty"]=="si"){ ?>
+            <script type="text/javascript">
+                var myModal = new bootstrap.Modal(document.getElementById('exampleModal2'))
+                myModal.show()
+            </script>   
+<?php  }   }?>
+
+          
+            
+
+<script>
+
+
+</script>
 
 
 <?php include('footer.php'); ?>
@@ -89,5 +118,6 @@ el 10/06/22 -->
     <script src = "bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
     <!-- custom js -->
     <script src = "js/script.js"></script>
+    <script src="js/mail.js"></script>
 </body>
 </html>

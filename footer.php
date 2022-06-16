@@ -52,7 +52,7 @@ el 10/06/22 -->
                             <i class = "fas fa-envelope"></i>
                         </span>
                         <span class = "fw-light">
-                            soporte@gamestore.com
+                            soporte@gamestoreuabcs.online
                         </span>
                     </div>
                     <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
