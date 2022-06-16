@@ -36,7 +36,7 @@ el 10/06/22 -->
 <!-- Inicio del navbar -->
 <header class="header">
       <!-- Se asignan las clases de bootstrap para darle estilo al navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark bg-black px-1">
+      <nav class="navbar navbar-expand-md navbar-dark bg-black px-1">
         <div class="container-fluid">
           <a href="index.php" class="logo nav-link text-white logo">
               <img src="img/logo.png" style="max-width:40px;" alt="">
@@ -48,7 +48,7 @@ el 10/06/22 -->
 
           <div class="collapse navbar-collapse " id="navbarCollapse">
               <div class="navbar-nav  ms-auto text-danger">
-                <a href="juegos.php" class="nav-item nav-link" style="color:#EABE3F;">Todos los juegos</a>
+                <a href="juegos.php" class="nav-item nav-link" style="color:#EABE3F;">Juegos</a>
                 <a href="contacto.php" class="nav-item nav-link" style="color:#EABE3F;">Contacto</a>
 
                 <a href=<?php echo $ruta?> class="nav-menu-link nav-link" style="color:#EABE3F;">
