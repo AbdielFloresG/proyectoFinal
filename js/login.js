@@ -6,10 +6,14 @@
 validarLogIn = () =>{
 
     let verificar = true;
-
+    let expresionRegularMail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     //Validaciones
     if(!document.getElementById("formLogIn").email.value){
-        alert("Está vacio el nombre mi pa");
+        alert("El Campo Email es requerido");
+        document.getElementById("formLogIn").email.focus();
+        verificar = false;
+    }else if(!expresionRegularMail.test(document.getElementById("formLogIn").email.value)){
+        alert("El email es invalido");
         document.getElementById("formLogIn").email.focus();
         verificar = false;
     }else if(!document.getElementById("formLogIn").password.value){

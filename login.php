@@ -32,6 +32,8 @@ el 10/06/22 -->
     <?php
         include("navbar.php");
     ?>
+    <?php  include('modales/verificaTusDatos.php'); ?>
+    <?php  include('modales/noSePuedeComprar.php'); ?>
 
         <!-- Container del login -->
         <div class="formulario">
@@ -56,24 +58,26 @@ el 10/06/22 -->
                     <!-- Si hay un error en los datos se regresa una variable por metodo GET 
                     y si el resultado es si, se muestra esta alerta -->
                     <div class="alerta">
-                        <?php
+                        <?php 
                             error_reporting(E_ALL | E_NOTICE);
                             if(isset($_GET["error"])){
-                                if($_GET["error"]=="si"){
-                                echo "<span>Verifica tus datos</span>";
-                                }else{
-                                    
-                                }
-                            }
+                                if($_GET["error"]=="si"){ ?>
+                                    <script type="text/javascript">
+                                        var myModal = new bootstrap.Modal(document.getElementById('verificaTusDatos'))
+                                        myModal.show()
+                                    </script>   
+                        <?php  }   }?>
+
+                        <?php 
+                            error_reporting(E_ALL | E_NOTICE);
                             if(isset($_GET["error2"])){
-                                if($_GET["error2"]=="si"){
-                                echo "<span>Es necesario estar registrado para poder comprar</span>";
-                                }else{
-                                    
-                                }
-                            }
-                            
-                        ?>
+                                if($_GET["error2"]=="si"){ ?>
+                                    <script type="text/javascript">
+                                        var myModal = new bootstrap.Modal(document.getElementById('noSePuedeComprar'))
+                                        myModal.show()
+                                    </script>   
+                        <?php  }   }?>
+
                     </div>
             </form>
         </div>

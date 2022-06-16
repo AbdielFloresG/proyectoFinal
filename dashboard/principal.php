@@ -69,7 +69,8 @@ $montoAnterior=0;
             $idVentas[]=$row['idVenta']; 
             rsort($idVentas);    
         ?>
-<?php } $tamaño=count($idVentas); echo 'tamaño es:'.$tamaño.'aqui: '.$idVentas[0];?>
+
+<?php } //$tamaño=count($idVentas); echo 'tamaño es:'.$tamaño.'aqui: '.$idVentas[0];?>
 
 <?php 
 for($i =0; $i<$tamaño; $i++){

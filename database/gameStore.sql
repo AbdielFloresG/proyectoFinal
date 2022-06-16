@@ -110,7 +110,7 @@ FOR EACH ROW
 INSERT INTO log_
 VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una actualizar en la tabla detalleVenta'));
 
-INSERT INTO usuario (nombreUsuario, apellidoUsuario, correoUsuario, passwordUsuario,rolUsuario) VALUES ('Abdiel', 'Flores', 'admin', '9d3b8487f1fcc17d70c4af51077db384fa2834fb','admin');
+INSERT INTO usuario (nombreUsuario, apellidoUsuario, correoUsuario, passwordUsuario,rolUsuario) VALUES ('Abdiel', 'Flores', 'admin@admin.com', '9d3b8487f1fcc17d70c4af51077db384fa2834fb','admin');
 
 INSERT INTO juego VALUES (0, 'Rainbow Six Siege', 200.00, 'Ubisoft', 'Shooter', 2015,'Videojuego de disparos táctico en línea desarrollado por Ubisoft Montreal y distribuidor por Ubisoft.', 1);
 INSERT INTO juego VALUES (0, 'GTA V', 300.00, 'Rockstar', 'Accion/Aventura', 2013,'Es un videojuego de acción-aventura de mundo abierto desarrollado por el estudio Rockstar North y distribuido por Rockstar Games.', 1);

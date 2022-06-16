@@ -6,6 +6,7 @@
 validarDatosSignUp = () =>{
 
     let verificar = true;
+    let expresionRegularMail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
     //Validaciones
     if(!document.getElementById("formSignUp").name.value){
@@ -15,6 +16,14 @@ validarDatosSignUp = () =>{
     }else if(!document.getElementById("formSignUp").lastname.value){
         alert("El campo Apellido es requerido");
         document.getElementById("formSignUp").lastname.focus();
+        verificar = false;
+    }else if(!document.getElementById("formSignUp").email.value){
+        alert("El campo Email es requerido");
+        document.getElementById("formSignUp").email.focus();
+        verificar = false;
+    }else if(!expresionRegularMail.test(document.getElementById("formSignUp").email.value)){
+        alert("El email es invalido");
+        document.getElementById("formSignUp").email.focus();
         verificar = false;
     }else if(!document.getElementById("formSignUp").password.value){
         alert("El campo Contraseña es requerido");

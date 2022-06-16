@@ -28,6 +28,7 @@ el 10/06/22 -->
     <!-- Se incluye el navbar de la pagina -->
     <?php
         include("navbar.php");
+        include('modales/correoYaRegistrado.php');
     ?>
 
     <div class="formulario">
@@ -40,7 +41,7 @@ el 10/06/22 -->
             <label for="lastname">Apellidos:</label>
             <input type="text" name="lastname" required="true" placeholder="Ingresa tu apellido" />
             <label for="email">Correo Electronico</label>
-            <input type="text" name="email" required="true" placeholder="Ingresa tu Email" />
+            <input type="email" name="email" required="true" placeholder="Ingresa tu Email" />
             <label for="password">Contraseña</label>
             <input type="password" name="password" required="true" placeholder="Ingresa tu Contraseña"/> 
             <label for="confirm_password">Confirma tu contraseña</label>
@@ -54,6 +55,16 @@ el 10/06/22 -->
             </div>
         </form>
     </div>
+
+    <?php 
+        error_reporting(E_ALL | E_NOTICE);
+        if(isset($_GET["error4"])){
+            if($_GET["error4"]=="si"){ ?>
+                <script type="text/javascript">
+                    var myModal = new bootstrap.Modal(document.getElementById('correoYaRegistrado'))
+                    myModal.show()
+                </script>   
+    <?php  }   }?>
 
 
     <!-- Se incluye el footer de la pagina -->
