@@ -15,7 +15,7 @@ el 10/06/22 -->
     require 'config/config.php';
 
     //Se crea el query, se ejecuta y se procesa el resultado
-    $query = "SELECT idJuego, nombreJuego, precio FROM Juego WHERE activo=1 ORDER BY idJuego ";
+    $query = "SELECT idJuego, nombreJuego, precio FROM juego WHERE activo=1 ORDER BY idJuego ";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);

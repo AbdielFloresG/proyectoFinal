@@ -12,7 +12,7 @@ el 10/06/22 -->
     $nombre = $_SESSION["nombre"];
     $apellido = $_SESSION["apellido"];
 
-    $query = "SELECT * FROM Juego;";
+    $query = "SELECT * FROM juego;";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);

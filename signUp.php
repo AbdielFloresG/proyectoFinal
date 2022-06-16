@@ -6,6 +6,7 @@ el 10/06/22 -->
 <!-- Archivos requeridos para el funcionamiento del index -->
 <?php
     require 'database/session.php';
+    require 'config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">

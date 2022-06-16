@@ -1,5 +1,10 @@
 <?php
 
+// $server = 'localhost';
+// $username = 'id19114801_gamestoredb';
+// $password = 'R/j$bii(h3z!xs8/';
+// $database = 'id19114801_gamestore';
+
 $server = 'localhost:3306';
 $username = 'root';
 $password = 'password';

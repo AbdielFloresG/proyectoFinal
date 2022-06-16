@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    @session_start();
+    //CjniM=BiAq/PZ9Jm
     if(isset($_SESSION['autentificado'])){
 
     }else{

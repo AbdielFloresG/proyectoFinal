@@ -9,18 +9,18 @@ $nombre = $_SESSION["nombre"];
 $apellido = $_SESSION["apellido"];
 
 
-$queryResultado = "SELECT * FROM Juego;";
+$queryResultado = "SELECT * FROM juego;";
 $sqlResultado = $conn->prepare($queryResultado);
 $sqlResultado->execute();
 $resultado = $sqlResultado->fetchAll(PDO::FETCH_ASSOC);
 
 
-$query3 = "SELECT COUNT(*) FROM Usuario WHERE rolUsuario='user';";
+$query3 = "SELECT COUNT(*) FROM usuario WHERE rolUsuario='user';";
 $sql3 = $conn->prepare($query3);
 $sql3->execute();
 $cantidadUsuarios = $sql3->fetchAll(PDO::FETCH_ASSOC);
 
-$query4 = "SELECT COUNT(*) FROM Usuario WHERE rolUsuario='admin';";
+$query4 = "SELECT COUNT(*) FROM usuario WHERE rolUsuario='admin';";
 $sql4 = $conn->prepare($query4);
 $sql4->execute();
 $cantidadAdmin = $sql4->fetchAll(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@ $sql5->execute();
 $idVenta = $sql5->fetchAll(PDO::FETCH_ASSOC);
 
 
-$query2 = "SELECT monto FROM Venta;";
+$query2 = "SELECT monto FROM venta;";
 $sql2 = $conn->prepare($query2);
 $sql2->execute();
 $cantidadVentas = $sql2->fetchAll(PDO::FETCH_ASSOC);

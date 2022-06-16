@@ -28,6 +28,8 @@
     $permiso = $row['rolUsuario'];
 
     if($permiso=='admin'){
+
+
       session_start();
       //Declaro variables de sesion
       $_SESSION["privilegio"]='admin';
@@ -36,7 +38,7 @@
       $_SESSION["apellido"] = $row["apellidoUsuario"];
       $_SESSION["email"] = $row["correoUsuario"];
       $_SESSION["idUsuario"] = $row["idUsuario"];
-      header("Location: ../dashboard/principal.php?$passwordCifrada");
+      header("Location: ../principal.php");
     }else{
       session_start();
       //Declaro variables de sesion

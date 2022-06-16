@@ -1,10 +1,8 @@
-<!-- Tienda GameStore 
-Este es el index de la pagina web 
-codigo realizado por Abdiel Flores Gastelum
-el 10/06/22 -->
-
-
 <?php
+    // <!-- Tienda GameStore 
+    // Este es el index de la pagina web 
+    // codigo realizado por Abdiel Flores Gastelum
+    // el 10/06/22 -->
     //Archivos requeridos para el funcionamiento del index
 
     // Se encarga de la conexion sql mediante PDO
@@ -15,13 +13,12 @@ el 10/06/22 -->
     require 'config/config.php';
 
     //Se crea el query, se ejecuta y se procesa el resultado
-    $query = "SELECT idJuego, nombreJuego, precio FROM Juego WHERE activo=1 ORDER BY idJuego DESC LIMIT 5";
+    $query = "SELECT idJuego, nombreJuego, precio FROM juego WHERE activo=1 ORDER BY idJuego DESC LIMIT 5";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,21 +36,18 @@ el 10/06/22 -->
 
 </head>
 <body>
-
 <!-- Se incluye el archivo de navbar -->
 <?php  include('navbar.php'); ?>
-
-
 <main>
     <!-- Se incluye el modal (Aviso de que se agregó al carrito) -->
     <?php  include('modales/agregadoCarrito.php'); ?>
 
 
-    <div id="carouselExampleFade"  class="carousel slide my-5 p-1 mx-auto" style="width: 90%; max-width:800px; height:24rem;" data-bs-ride="carousel">
+    <div id="carouselExampleFade"  class="carousel slide my-4 p-1 mx-auto" style="width: 90%; max-width:800px; height:24rem;" data-bs-ride="carousel">
         
         <div class="carousel-inner h-100">
-            <div class="carousel-item active p-5 h-100">
-                <div class=" h-100 p-3 mx-auto" style="color: #EABE3F; box-sizing: content-box;">
+            <div class="carousel-item active px-5 h-100">
+                <div class=" h-100 px-4 mx-auto" style="color: #EABE3F; box-sizing: content-box;">
                     <h1 class="mx-auto" style="width:230px; color:#fff;">Bienvenido</h1>
                     <p class="mx-auto my-4 fs-3 h-100 px-2" style="width:100%" >Bienvenido a GameStore, una tienda donde encontraras todos tus videojuegos favoritos y muchas cosas mas</p>
                    
@@ -94,7 +88,7 @@ el 10/06/22 -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  row-cols-lg-4 row-cols-xl-5 g-4">
             <?php foreach($resultado as $row) { ?>
                 <div class="col align-items-stretch d-block ">
-                    <div class="card shadow-sm h-100" style="max-height: 600px;">
+                    <div class="card shadow-sm h-100 mx-1" style="max-height: 600px;">
                         <?php 
                             $id = $row['idJuego'];
                             $imagen = "img/productos/$id/principal.jpg";

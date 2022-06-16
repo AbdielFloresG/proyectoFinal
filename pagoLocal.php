@@ -9,6 +9,10 @@ el 10/06/22 -->
     require 'database/session.php';
     require 'config/config.php';
 
+    print_r($_SESSION);
+    if($_SESSION['privilegio']=="guest"){
+        header("Location: login.php?error2=si");
+    }
 
     //Se guardan en la variable productos los productosn del carrito que estan almacenados en la variable session
     $productos = isset($_SESSION['carrito']['productos'])? $_SESSION['carrito']['productos'] : null;
@@ -28,6 +32,7 @@ el 10/06/22 -->
         header("Location: index.php");
         exit;
     }
+  
 ?>
 
 <!DOCTYPE html>
@@ -102,12 +107,13 @@ el 10/06/22 -->
             </div>
             <div class="row ">
                 <!-- Boton para pagar, y se redirecciona a la pagina de captura local -->
+                
                 <div class="">
                     <a href="capturaLocal.php" class="btn btn-warning p-3 fs-3 mx-auto">Pagar</a>
                 </div>
             </div>
         </div>
-
+        <br><br><br><br><br><br>
     </main>
 
     <?php include('footer.php'); ?>

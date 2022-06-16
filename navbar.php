@@ -13,13 +13,14 @@ el 10/06/22 -->
   $apellido = $_SESSION["apellido"];
   $ruta="";
   $texto="";
+ 
 
   //Dependiendo de el privilegio de la sesion se cambia dinamicamente el contenido del navbar
   if($_SESSION['privilegio']=='user'){
     $texto = "Mi Cuenta";
     $ruta = "miCuenta.php";
   }else if($_SESSION['privilegio']=='guest'){
-    $texto = "Iniciar Sesion";
+    $texto = "Iniciar sesión";
     $ruta = "login.php";
   }else if($_SESSION['privilegio']=='admin'){
     $texto = "Dashboard";

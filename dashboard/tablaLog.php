@@ -7,7 +7,7 @@
     $nombre = $_SESSION["nombre"];
     $apellido = $_SESSION["apellido"];
 
-    $query = "SELECT * FROM Log_;";
+    $query = "SELECT * FROM log_;";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);

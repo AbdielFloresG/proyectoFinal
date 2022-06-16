@@ -39,7 +39,7 @@ el 10/06/22 -->
             <!-- Formulario de inicio de sesion -->
             <form id="formLogIn" action="database/validacionLogIn.php"  method="POST">
                 
-                    <label for="email">Correo Electronico</label>
+                    <label for="email">Correo Electrónico</label>
                     <input type="text" id="email" name="email" required="true" placeholder="Ingresa tu Email" />
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" required="true" placeholder="Ingresa tu Contraseña" minlength="6" maxlength="20"/> 
@@ -61,6 +61,13 @@ el 10/06/22 -->
                             if(isset($_GET["error"])){
                                 if($_GET["error"]=="si"){
                                 echo "<span>Verifica tus datos</span>";
+                                }else{
+                                    
+                                }
+                            }
+                            if(isset($_GET["error2"])){
+                                if($_GET["error2"]=="si"){
+                                echo "<span>Es necesario estar registrado para poder comprar</span>";
                                 }else{
                                     
                                 }
