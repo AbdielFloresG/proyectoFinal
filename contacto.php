@@ -9,87 +9,12 @@ el 10/06/22 -->
     require 'database/conexion.php';
     require 'database/session.php';
 
-
     //Se crea el query
     $query = "SELECT idJuego, nombreJuego, precio FROM Juego WHERE activo=1;";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
-<style>
-    #divIzquierda{
-        float:left;
-        width: 45%;
-        margin-left:5%;
-    }
-
-    #divDerecha{
-        float:left;
-        width: 50%;
-    }
-    #aparte{
-        overflow:hidden;
-    }
-    .alinearIzquierda{
-        text-align:left;
-    }
-    #centarCirculos{
-        overflow:hidden;
-        width: 190px;
-        height: 46px;
-    }
-    .circulo {
-     width: 40px;
-     height: 40px;
-     -moz-border-radius: 50%;
-     -webkit-border-radius: 50%;
-     border-radius: 50%;
-     background: #EABE3F;
-     float:left;
-     margin-left:10px;
-    }
-    #circuloUno{
-        margin-left:0px;
-    }
-    .mensaje{
-        height: 20%;
-        text-align:left;
-        text-align:top;
-    }
-    #textArea{
-        outline: none;
-        padding: 10px;
-        display: block;
-        width: 85%;
-        height: 20%;
-        max-width: 700px;
-        border-radius: 3px;
-        border: 1px solid #eee;
-        margin: 5px auto 25px;
-        border-color:#EABE3F;
-    }
-    ::placeholder { color: #FFECB4; }
-
-    #estiloBoton{
-        padding: 10px;
-        background: #EABE3F;
-        max-width: 400px;
-        width: 65%;
-        margin: 30px auto 25px;
-        font-size: larger;
-        border: 0;
-        border-radius: 4px;
-        cursor: pointer;
-        color: black;
-        height: 70px;
-    }
-    #estiloBoton:hover{
-        background: rgba(234, 190, 63,0.6);
-    }
-</style>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -111,40 +36,43 @@ el 10/06/22 -->
 <?php  include('navbar.php'); ?>
 
 <main>
-<div id="aparte" class="formulario">
-        <div  id="divIzquierda">
-            <br><br><br><br>
-            <h1 class="alinearIzquierda">Contactanos</h1> 
-            <br>
-            <p style="color: #FFECB4;" class="alinearIzquierda">Escribe lo que desees comunicarnos,
-               veremos como ayudarte. Nos importa mucho tu opinion todo 
-               mensaje sera bien recibido y contestado, nos ayuda a mejorar.
-            </p>
-            <br>
-            <center>
-                <div id="centarCirculos">
-                    <div id="circuloUno" class="circulo"></div>
-                    <div class="circulo"></div>
-                    <div class="circulo"></div>
-                    <div class="circulo"></div>
-                </div>
-            </center>
-        </div>
-        <div id="divDerecha">            
+    <h1 class="titulos">Contactanos</h1>
 
-            <form action="enviarCorreo.php" method="post">
-                    <label>Nombre</label>
-                    <input style="background:#171515; color: #FFECB4; border-color:#EABE3F;" type="text" id="email" name="email"  placeholder="Ingresa tu nombre" >
-                    <label for="email">Correo Electronico</label>
-                    <input style="background:#171515; color: #FFECB4; border-color:#EABE3F;" type="text" id="email" name="nombreUsuario" placeholder="Ingresa tu correo electronico" >
-                    <label for="email">Mensaje</label>
-                    <textarea style="background:#171515; color: #FFECB4;" name="textoArea" id="textArea" rows="10" cols="50" placeholder="Ingresa tu mensaje"></textarea>   
-                    <input type="submit" id="estiloBoton" name="enviar" value="Enviar">
-                    
-           
-            </form>
-         </div>
+    <div class="contact-wrapper">
+        <div class="contact-info">
+                <h2>Contactanos</h2>
+                <p>Escribe lo que desees comunicarnos, veremos como ayudarte. Nos importa mucho tu opinion todo mensaje sera bien recibido y contestado, nos ayuda a mejorar.</p>
+            </div>
+            <div class="contact-form">
+
+                <form action="">
+                    <p>
+                        <label>Nombre completo</label>
+                        <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+                    </p>
+                    <p>
+                        <label>Correo electrónico</label>
+                        <input type="email" name="email" placeholder="Ingresa tu correo electrónico">
+                    </p>
+                    <p>
+                        <label>Asunto</label>
+                        <input type="text" name="asunto" placeholder="Ingresa el asunto">
+                    </p>
+                    <p class="block">
+                    <label>Mensaje</label> 
+                        <textarea name="mensaje" rows="3" placeholder="Ingresa el mensaje"></textarea>
+                    </p>
+                    <p class="block">
+                        <button>
+                            Send
+                        </button>
+                    </p>
+                </form>
+            </div>
         </div>
+    </div>
+
+
 </main>
 
 

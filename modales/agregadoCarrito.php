@@ -11,10 +11,8 @@
         Producto agregado al carrito satisfactoriamente
       </div>
       <div class="modal-footer">
-        <a href="checkout.php"class="btn btn-warning">ir a carrito</a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
-        
+        <a href="checkout.php"class="btn btn-warning">ir a carrito</a>
       </div>
     </div>
   </div>

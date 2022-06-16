@@ -11,7 +11,7 @@
     if($productos != null){
         foreach($productos as $clave =>$cantidad){
 
-            $query = "SELECT idJuego, nombreJuego, precio, $cantidad AS cantidad FROM Juego WHERE idJuego=? AND activo=1;";
+            $query = "SELECT idJuego, nombreJuego, precio, $cantidad AS cantidad FROM juego WHERE idJuego=? AND activo=1;";
             $sql = $conn->prepare($query);
             $sql->execute([$clave]);
             $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);

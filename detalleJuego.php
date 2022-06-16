@@ -28,14 +28,14 @@ el 10/06/22 -->
         if($token == $token_tmp){
 
             // Se hace el query para obtener la informacion del juego
-            $query = "SELECT count(idJuego) FROM Juego WHERE idJuego=? AND activo=1;";
+            $query = "SELECT count(idJuego) FROM juego WHERE idJuego=? AND activo=1;";
             $sql = $conn->prepare($query);
             $sql->execute([$id]);
 
             
             if($sql->fetchColumn()>0){
                 
-                $query2 = "SELECT * FROM Juego WHERE idJuego= $id AND activo=1 LIMIT 1;";
+                $query2 = "SELECT * FROM juego WHERE idJuego= $id AND activo=1 LIMIT 1;";
                 $sql2 = $conn->prepare($query2);
                 $sql2->execute();       
                 $resultado = $sql2->fetchAll(PDO::FETCH_ASSOC);
@@ -94,8 +94,8 @@ el 10/06/22 -->
                 <p class="lead text-light"><?php echo $descripcionJuego?></p>
 
                 <div class="d-grid gap-3 col-6 mx-auto ">
-                    <button class="btn btn-warning mt-4 py-3" type="button">Comprar ahora</button>
-                    <button class="btn btn-outline-warning py-3 mb-5"  type="button"  onclick="addProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')" >Agregar al carrito</button>
+                    <a class="btn btn-warning mt-4 py-3" type="button"  onclick="addProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')" href="checkout.php">Comprar ahora</a>
+                    <button class="btn btn-outline-warning py-3 mb-5" id="btn-carrito" type="button"  onclick="addProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')" >Agregar al carrito</button>
                 </div>
            </div>
        </div>
@@ -125,6 +125,27 @@ el 10/06/22 -->
                     elemento.innerHTML = data.numero
                 }
             })
+        }
+
+        function venderProducto(id,token){
+            let url = 'clases/carrito.php'
+            let formData = new FormData()
+            formData.append('id',id)
+            formData.append('token',token)
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(data => {
+                if(data.ok){
+                    let elemento = document.getElementById("num_cart")
+                    elemento.innerHTML = data.numero
+                }
+            })
+            let btnAdd = document.getElementById("btn-carrito");
+            btnAdd.click();
         }
     </script>
 

@@ -48,7 +48,7 @@ el 10/06/22 -->
 
           <div class="collapse navbar-collapse " id="navbarCollapse">
               <div class="navbar-nav  ms-auto text-danger">
-                <a href="juegos.php" class="nav-item nav-link" style="color:#EABE3F;">Juegos</a>
+                <a href="juegos.php" class="nav-item nav-link" style="color:#EABE3F;">Todos los juegos</a>
                 <a href="contacto.php" class="nav-item nav-link" style="color:#EABE3F;">Contacto</a>
 
                 <a href=<?php echo $ruta?> class="nav-menu-link nav-link" style="color:#EABE3F;">

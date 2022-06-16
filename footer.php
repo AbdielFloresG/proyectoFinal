@@ -25,18 +25,13 @@ el 10/06/22 -->
                             </a>
                         </li>
                         <li class = "my-3">
-                            <a href = "categorias.php" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Categorias
+                            <a href = "juegos.php" class = "text-white text-decoration-none text-muted">
+                                <i class = "fas fa-chevron-right me-1"></i> Todos los juegos
                             </a>
                         </li>
                         <li class = "my-3">
                             <a href = "contacto.php" class = "text-white text-decoration-none text-muted">
                                 <i class = "fas fa-chevron-right me-1"></i> Contacto
-                            </a>
-                        </li>
-                        <li class = "my-3">
-                            <a href = "aboutUs.php" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Acerca de nosotros
                             </a>
                         </li>
                     </ul>
@@ -57,7 +52,7 @@ el 10/06/22 -->
                             <i class = "fas fa-envelope"></i>
                         </span>
                         <span class = "fw-light">
-                            suporte@gamestore.com
+                            soporte@gamestore.com
                         </span>
                     </div>
                     <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
@@ -75,22 +70,22 @@ el 10/06/22 -->
                     <div>
                         <ul class = "list-unstyled d-flex">
                             <li>
-                                <a href = "facebook.com" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                <a href = "https://www.facebook.com" class = "text-white text-decoration-none text-muted fs-4 me-4">
                                     <i class = "fab fa-facebook-f"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href = "twitter.com" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                <a href = "https://twitter.com/home" class = "text-white text-decoration-none text-muted fs-4 me-4">
                                     <i class = "fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href = "instagram.com" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                <a href = "https://www.instagram.com/" class = "text-white text-decoration-none text-muted fs-4 me-4">
                                     <i class = "fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href = "pinterest.com" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                <a href = "https://www.pinterest.com/" class = "text-white text-decoration-none text-muted fs-4 me-4">
                                     <i class = "fab fa-pinterest"></i>
                                 </a>
                             </li>
