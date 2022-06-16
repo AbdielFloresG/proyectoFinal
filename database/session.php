@@ -5,7 +5,7 @@
 
     }else{
         $_SESSION["privilegio"]='guest';
-        $_SESSION["autentificado"]=false;
+        $_SESSION["autentificado"]=true;
         $_SESSION["nombre"]="Invitado";
         $_SESSION["apellido"]="";
         $_SESSION["idUsuario"]="";

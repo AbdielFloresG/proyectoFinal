@@ -1,4 +1,5 @@
 <?php
+  require 'session.php'; 
   require '../config/config.php';
   require 'conexionSQLI.php';
   $email = strtolower($_POST['email']);
@@ -38,7 +39,7 @@
       $_SESSION["apellido"] = $row["apellidoUsuario"];
       $_SESSION["email"] = $row["correoUsuario"];
       $_SESSION["idUsuario"] = $row["idUsuario"];
-      header("Location: ../principal.php");
+      header("Location: ../index.php");
     }else{
       session_start();
       //Declaro variables de sesion

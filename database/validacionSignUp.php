@@ -1,5 +1,6 @@
 
 <?php
+require 'session.php'; 
 require '../config/config.php';
   require 'conexionSQLI.php';
   $email = $_POST['email'];
@@ -38,9 +39,7 @@ require '../config/config.php';
     try{
       $stmt->execute();
       $message = 'Successfully created new user';
-  
       header("location: ../login.php");
-
     }catch(Exception $e){
       $message = 'Sorry there must have been an issue creating your account';
       header("location: ../signUp.php?error=si");

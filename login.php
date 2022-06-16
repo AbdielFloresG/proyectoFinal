@@ -37,7 +37,7 @@ el 10/06/22 -->
         <div class="formulario">
             <h2>Iniciar sesión</h2>
             <!-- Formulario de inicio de sesion -->
-            <form id="formLogIn" action="database/validacionLogIn.php"  method="POST">
+            <form id="formLogIn" action="database/validacionLogin.php"  method="POST">
                 
                     <label for="email">Correo Electrónico</label>
                     <input type="text" id="email" name="email" required="true" placeholder="Ingresa tu Email" />
