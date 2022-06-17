@@ -40,6 +40,7 @@
         <!-- custom css -->
         <link rel = "stylesheet" href = "css/estilos.css">
         <link rel = "stylesheet" href = "bootstrap-5.0.2-dist/css/bootstrap.min.css">
+        <link rel="icon" href="img/icon.ico">
     </head>
     <body>
 

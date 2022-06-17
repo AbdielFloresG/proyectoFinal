@@ -33,6 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- custom css -->
     <link rel = "stylesheet" href = "css/estilos.css">
+    <link rel="icon" href="img/icon.ico">
 
 </head>
 <body>
