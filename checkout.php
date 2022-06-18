@@ -114,6 +114,8 @@
                     <?php }?>
                 </table>
             </div>
+
+
             <?php if($lista_carrito != null){ ?>
                 <div class="row">
                     <div class="col-md-5 offset-md-7 d-grid gap-2">
@@ -121,6 +123,9 @@
                     </div>
                 </div>
             <?php }?>
+
+
+    
         </div>
 
 

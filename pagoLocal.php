@@ -9,7 +9,7 @@ el 10/06/22 -->
     require 'database/session.php';
     require 'config/config.php';
 
-    print_r($_SESSION);
+    //print_r($_SESSION);
     if($_SESSION['privilegio']=="guest"){
         header("Location: login.php?error2=si");
     }
@@ -110,8 +110,10 @@ el 10/06/22 -->
                 <!-- Boton para pagar, y se redirecciona a la pagina de captura local -->
                 
                 <div class="">
-                    <a href="capturaLocal.php" class="btn btn-warning p-3 fs-3 mx-auto">Pagar</a>
+                    <a id="btn-pagar"href="capturaLocal.php" class="btn btn-warning p-3 fs-3 mx-auto" style="display: none;">Pagar</a>
                 </div>
+
+                <div id="paypal-button-container"></div>
             </div>
         </div>
         <br><br><br><br><br><br>
@@ -127,7 +129,50 @@ el 10/06/22 -->
     <!-- custom js -->
     <script src = "js/script.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID?>&currency=<?php echo CURRENCY?>"></script>
-    
+    <script>
+            paypal.Buttons({style:{
+                color: 'blue',
+                shape: 'pill',
+                label: 'pay'
+            },
+            createOrder: function(data, actions){
+                return actions.order.create({
+                    purchase_units: [{
+                        amount:{
+                            value: <?php echo $total;?>
+                        }
+                    }]
+                });
+            },
+
+            onApprove: function(data, actions){
+                document.getElementById('btn-pagar').click();                
+                actions.order.capture().then(function(detalles2){
+                console.log(detalles2) 
+                let url = 'clases/captura.php'
+                return fetch(url,{
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify({
+                        detalles: detalles2
+                    })
+                });
+            });
+            },
+
+            onCancel: function(data){
+                alert("Pago cancelado")
+                console.log(data)
+               
+            }
+        
+        
+            }).render('#paypal-button-container')
+        </script>
+
+
     <script>
         
     </script>

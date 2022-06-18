@@ -1,9 +1,9 @@
 <?php
 
 // $server = 'localhost';
-// $username = 'id19114801_gamestoredb';
-// $password = 'R/j$bii(h3z!xs8/';
-// $database = 'id19114801_gamestore';
+// $username = 'u367861807_admin';
+// $password = 'Gamest0re';
+// $database = 'u367861807_gamestorebd';
 
 $server = 'localhost:3306';
 $username = 'root';
