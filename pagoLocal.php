@@ -22,7 +22,7 @@ el 10/06/22 -->
     if($productos != null){
         //Se consultan los demas datos de los productos con el id guardado en la variable
         foreach($productos as $clave =>$cantidad){
-            $query = "SELECT idJuego, nombreJuego, precio, $cantidad AS cantidad FROM Juego WHERE idJuego=? AND activo=1;";
+            $query = "SELECT idJuego, nombreJuego, precio, $cantidad AS cantidad FROM juego WHERE idJuego=? AND activo=1;";
             $sql = $conn->prepare($query);
             $sql->execute([$clave]);
             $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);

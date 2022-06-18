@@ -80,6 +80,7 @@ el 10/06/22 -->
 <body>
 
 <?php  include('navbar.php'); ?>
+<?php  include('modales/agregadoCarrito.php'); ?>
 
 <main>
     <div class="container">
@@ -94,8 +95,8 @@ el 10/06/22 -->
                 <p class="lead text-light"><?php echo $descripcionJuego?></p>
 
                 <div class="d-grid gap-3 col-6 mx-auto ">
-                    <a class="btn btn-warning mt-4 py-3" type="button"  onclick="addProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')" href="checkout.php">Comprar ahora</a>
-                    <button class="btn btn-outline-warning py-3 mb-5" id="btn-carrito" type="button"  onclick="addProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')" >Agregar al carrito</button>
+                    <button class="btn btn-warning mt-4 py-3" onclick="venderProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')"  >Comprar ahora</button>
+                    <button class="btn btn-outline-warning py-3 mb-5" id="btn-carrito" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"   onclick="addProducto(<?php echo $id;?>,'<?php echo $token_tmp;?>')" >Agregar al carrito</button>
                 </div>
            </div>
        </div>
@@ -144,8 +145,12 @@ el 10/06/22 -->
                     elemento.innerHTML = data.numero
                 }
             })
-            let btnAdd = document.getElementById("btn-carrito");
-            btnAdd.click();
+
+            setTimeout(redireccionar, 500)
+            
+        }
+        redireccionar = () =>{
+            window.location.href = 'checkout.php';
         }
     </script>
 
