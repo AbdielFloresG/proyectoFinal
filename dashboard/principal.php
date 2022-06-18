@@ -8,7 +8,6 @@ require '../database/sessionAdmin.php';
 $nombre = $_SESSION["nombre"];
 $apellido = $_SESSION["apellido"];
 
-
 $queryResultado = "SELECT * FROM juego;";
 $sqlResultado = $conn->prepare($queryResultado);
 $sqlResultado->execute();

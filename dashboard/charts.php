@@ -8,10 +8,6 @@ require '../database/sessionAdmin.php';
 $nombre = $_SESSION["nombre"];
 $apellido = $_SESSION["apellido"];
 
-
-
-
-
 $query3 = "SELECT COUNT(*) FROM usuario WHERE rolUsuario='user';";
 $sql3 = $conn->prepare($query3);
 $sql3->execute();
