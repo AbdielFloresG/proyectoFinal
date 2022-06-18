@@ -39,7 +39,11 @@
       $_SESSION["apellido"] = $row["apellidoUsuario"];
       $_SESSION["email"] = $row["correoUsuario"];
       $_SESSION["idUsuario"] = $row["idUsuario"];
+<<<<<<< Updated upstream
       header("Location: ../index.php");
+=======
+      header("Location: ../dashboard/principal.php");
+>>>>>>> Stashed changes
     }else{
       session_start();
       //Declaro variables de sesion
