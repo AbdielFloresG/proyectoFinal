@@ -26,7 +26,7 @@ if(is_array($datos)){
     
     
 
-$query="INSERT INTO Venta (idVenta, idTransaccion, idUsuario,descripcion,fechaVenta, monto) VALUES (0,$id_transaccion,$idUsuario,'$status','$fecha',$monto)";
+$query="INSERT INTO venta (idVenta, idTransaccion, idUsuario,descripcion,fechaVenta, monto) VALUES (0,$id_transaccion,$idUsuario,'$status','$fecha',$monto)";
 
 //     $query="INSERT INTO Venta (idVenta, idTransaccion, idUsuario,descripcion,fechaVenta, monto) VALUES (0,$id_transaccion,$idUsuario,'$status','$fecha',$monto)";
 

@@ -3,7 +3,10 @@
     // Este es el index de la pagina web 
     // codigo realizado por Abdiel Flores Gastelum
     // el 10/06/22 -->
+    // Modo Admin correo: admin@admin.com  Pass: 123456
     //Archivos requeridos para el funcionamiento del index
+
+
 
     // Se encarga de la conexion sql mediante PDO
     require 'database/conexion.php';

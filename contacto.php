@@ -10,7 +10,7 @@ el 10/06/22 -->
     require 'database/session.php';
 
     //Se crea el query
-    $query = "SELECT idJuego, nombreJuego, precio FROM Juego WHERE activo=1;";
+    $query = "SELECT idJuego, nombreJuego, precio FROM juego WHERE activo=1;";
     $sql = $conn->prepare($query);
     $sql->execute();
     $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);

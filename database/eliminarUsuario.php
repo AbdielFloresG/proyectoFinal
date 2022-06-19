@@ -9,7 +9,7 @@
     if (!empty($_POST['id'])){
 
     //Se crea el query
-    $query = "DELETE FROM Usuario  WHERE idUsuario = $id;";
+    $query = "DELETE FROM usuario  WHERE idUsuario = $id;";
  
     $stmt = $conn->prepare($query);
 

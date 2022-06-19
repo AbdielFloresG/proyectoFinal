@@ -7,6 +7,8 @@
         $header = "From: ".$email."\r\n";
         $header.= "Reply-to: noreply2@example.com"."\r\n";
         $header.="X-Mailer: PHP/". phpversion();
+
+        //Correo a enviar
         $destinatario = "soporte@gamestoreuabcs.online";
         $cuerpo= "Mensaje enviado por ".$nombre."\r\n"."Correo electronico: ".$email."\r\n".$mensaje."\r\n";
         $mail = mail($destinatario,$asunto,$cuerpo,$header);

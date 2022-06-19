@@ -110,6 +110,8 @@ FOR EACH ROW
 INSERT INTO log_
 VALUES(0,CURRENT_TIMESTAMP(),CONCAT('Se realizo una actualizar en la tabla detalleVenta'));
 
+
+##contraseña :'123456'
 INSERT INTO usuario (nombreUsuario, apellidoUsuario, correoUsuario, passwordUsuario,rolUsuario) VALUES ('Abdiel', 'Flores', 'admin@admin.com', '9d3b8487f1fcc17d70c4af51077db384fa2834fb','admin');
 
 INSERT INTO juego VALUES (0, 'Rainbow Six Siege', 200.00, 'Ubisoft', 'Shooter', 2015,'Videojuego de disparos táctico en línea desarrollado por Ubisoft Montreal y distribuidor por Ubisoft.', 1);

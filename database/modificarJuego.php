@@ -22,7 +22,7 @@
     if (!empty($_POST['name']) && !empty($_POST['precio']) && !empty($_POST['desarrollador']) && !empty($_POST['genero'])){
 
     //Se crea el query
-    $query = "UPDATE  Juego SET nombreJuego ='$nombreJuego', precio = $precioJuego, desarrollador = '$desarrolladorJuego', genero = '$generoJuego', fechaLanzamiento = $anoJuego, descripcion = '$descripcionJuego', activo = $activo WHERE idJuego = $id;";
+    $query = "UPDATE  juego SET nombreJuego ='$nombreJuego', precio = $precioJuego, desarrollador = '$desarrolladorJuego', genero = '$generoJuego', fechaLanzamiento = $anoJuego, descripcion = '$descripcionJuego', activo = $activo WHERE idJuego = $id;";
  
     $stmt = $conn->prepare($query);
 

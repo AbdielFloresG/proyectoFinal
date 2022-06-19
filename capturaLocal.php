@@ -14,7 +14,7 @@ require 'config/config.php';
     if($productos != null){
         foreach($productos as $clave =>$cantidad){
 
-            $query = "SELECT idJuego, nombreJuego, precio, $cantidad AS cantidad FROM Juego WHERE idJuego=? AND activo=1;";
+            $query = "SELECT idJuego, nombreJuego, precio, $cantidad AS cantidad FROM juego WHERE idJuego=? AND activo=1;";
             $sql = $conn->prepare($query);
             $sql->execute([$clave]);
             $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
@@ -56,7 +56,7 @@ require 'config/config.php';
         }
 
         $dt = date('Y-m-d h:i:s');
-        $query = "INSERT INTO Venta Values (0,$idUsuario,'$correoUsuario','$dt',$total)";
+        $query = "INSERT INTO venta Values (0,$idUsuario,'$correoUsuario','$dt',$total)";
         $sql = $conn->prepare($query);
         $sql->execute();
 

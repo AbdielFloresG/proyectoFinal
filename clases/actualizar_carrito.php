@@ -36,7 +36,7 @@ function agregar($id, $cantidad){
         if(isset($_SESSION['carrito']['productos'][$id])){
             $_SESSION['carrito']['productos'][$id] = $cantidad;
 
-            $query = "SELECT  precio, $cantidad FROM Juego WHERE idJuego=? AND activo=1;";
+            $query = "SELECT  precio, $cantidad FROM juego WHERE idJuego=? AND activo=1;";
             $sql = $conn->prepare($query);
             $sql->execute([$id]);
             $row = $sql->fetch(PDO::FETCH_ASSOC);

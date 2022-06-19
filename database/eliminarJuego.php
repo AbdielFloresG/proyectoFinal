@@ -10,7 +10,7 @@
     if (!empty($_POST['id'])){
 
     //Se crea el query
-    $query = "DELETE FROM Juego  WHERE idJuego = $id;";
+    $query = "DELETE FROM juego  WHERE idJuego = $id;";
  
     $stmt = $conn->prepare($query);
 
